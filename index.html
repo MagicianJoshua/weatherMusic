@@ -5,22 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Music</title>
     <link rel="stylesheet" href="assets/style.css">
+    <link rel="icon" href="assets/ImageAssets/MoodMusicIcon.png">
 </head>
 <body>
     <header>
         <h1>Playlist Generator</h1>
     </header>
     
-    <section id="WeatherCardEl" class=" main-container flex-container">
-        <div id="WeatherCardHeader">
-            <p>picture</p>
-            <p>city name</p>
-        
+    <section id="WeatherCardEl" class=" Main-Container flex-container-row">
+        <div>
+        <div id="WeatherCardHeader" class=" flex-container-column">
+            <div id="WeatherIcon">
+                <img class='ImageClass' src="assets/ImageAssets/MoodMusicIcon.png" alt="WeatherIcon">
+            </div>
+            <div id="cityName">
+                <h2>CITYNAMEPLACEHOLDER</h2>
+            </div>
+        </div>
+
+
         </div>
 
         <div id="playlistEl">Main playlist div</div>
 
-        <div id="searchbarEl"><p>Searchbar</p></div>
+        <div id="searchbarEl">
+            <p>Searchbar</p>
+        </div>
     </section>
 
 </body>

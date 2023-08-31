@@ -1,50 +1,86 @@
-body {
-    background-color: rgb(54, 54, 54);
-}
 
-header {
-    display:flex;
-    justify-content: center;
-}
+
 :root{
  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
  font-size: 25px;
+ --Black: #000000;
+ --White: #ffffff;
+ --Gray: #858585;
  
 }
 
 header{
+    display:flex;
+    justify-content: center;
     background-color: rgb(245, 244, 244);
     height: 40%;
     width: 100%;
 }
 
-.Main-Container{
-background-color: brown;
-width: 500px;
-height: 800px;
-border: solid pink;
+body {
+    background-color: rgb(54, 54, 54);
+
 }
 
-.flex-container{
+h2{
+    font-size: 15px;
+    color: var(--White);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin: 20px;
+
+}
+
+.ImageClass{
+    width: 80%;
+    height: 80%;
+}
+
+.Main-Container{
+background: linear-gradient(to bottom, var(--Black), var(--White));
+width: 100%;
+height: 100%;
+border: solid pink;
+max-width: 500px;
+margin: 0 auto;
+}
+
+.flex-container-row{
 display: flex;
 justify-content: center;
 align-items: center;
 flex-direction: column;
-border: solid rgb(175, 247, 178);
-margin: 300px;
+border: solid var(--Black);
 }
+
+.flex-container-column{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: solid var(--Black);
+    }
 
 #WeatherCardHeader{
     display: flex;
     flex-direction: row;
     margin: 50px, 50px, 50px, 0px;
+    flex: 3;
 }
 
 #playlistEl{
     background-color: rgb(134, 120, 148);
+    padding: 5px;
+    border: solid var(--Black);
+    margin: 250px;
+    width: 95%;
+    height: 90%;
 }
 
 #searchbarEl{
     background-color: rgb(116, 112, 114);
+    width: 90%;
+    margin: 20px;
+    border: solid var(--Black);
 }
+
 
