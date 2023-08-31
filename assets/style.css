@@ -1,8 +1,50 @@
 body {
-    background-color: beige;
+    background-color: rgb(54, 54, 54);
 }
 
 header {
     display:flex;
     justify-content: center;
 }
+:root{
+ font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+ font-size: 25px;
+ 
+}
+
+header{
+    background-color: rgb(245, 244, 244);
+    height: 40%;
+    width: 100%;
+}
+
+.Main-Container{
+background-color: brown;
+width: 500px;
+height: 800px;
+border: solid pink;
+}
+
+.flex-container{
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+border: solid rgb(175, 247, 178);
+margin: 300px;
+}
+
+#WeatherCardHeader{
+    display: flex;
+    flex-direction: row;
+    margin: 50px, 50px, 50px, 0px;
+}
+
+#playlistEl{
+    background-color: rgb(134, 120, 148);
+}
+
+#searchbarEl{
+    background-color: rgb(116, 112, 114);
+}
+
