@@ -99,7 +99,8 @@ function cardConstructor(name,link,image){
     Container.appendChild(playlistImg);
 
     let playlistLink = document.createElement("a");
-    playlistLink.setAttribute("")
+    playlistLink.setAttribute("href",link);
+    playlistLink.textContent
 }
 
 
