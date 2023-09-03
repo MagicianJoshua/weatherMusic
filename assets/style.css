@@ -40,6 +40,12 @@ margin: 300px;
     margin: 50px, 50px, 50px, 0px;
 }
 
+.weather {
+    display: flex;
+    flex-direction: row;
+    margin: 50px, 50px, 50px, 0px;
+}
+
 #playlistEl{
     background-color: rgb(134, 120, 148);
 }
