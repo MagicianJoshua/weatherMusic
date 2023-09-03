@@ -1,9 +1,11 @@
-
+var moods = ["Happy ","Sad ","Angry ","Anxious " ,"dreamy "];
 var genres = ["metal","jazz","pop","rock","country"];
-let ran = Math.floor(Math.random() * genres.length);
-var userInfo = "sad "+genres[ran];
+let ran1 = Math.floor(Math.random() * genres.length);
+let ran2 = Math.floor(Math.random() * moods.length);
+var userInfo = moods[ran2]+genres[ran1];
+console.log(userInfo);
 
-const url = "https://spotify23.p.rapidapi.com/search/?q="+userInfo+"&type=playlists&offset=0&limit=10&numberOfTopResults=5";
+const url = "https://spotify23.p.rapidapi.com/search/?q="+userInfo+"&type=playlists&offset=0&limit=50&numberOfTopResults=5";
 const options = {
 	method: 'GET',
 	headers: {
@@ -23,7 +25,7 @@ fetch(url,options)
     let playlists = data.playlists.items;
     let playlistArray = [];
     for (let i = 0; i < playlists.length; i++){
-        
+        console.log(i);
         playlistArray.push(playlists[i].data);
 
     }
