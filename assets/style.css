@@ -111,10 +111,20 @@ border: solid var(--Black);
 /**This area is for the spotify playlist card */
 #playlistEl{
     background-color: rgb(134, 120, 148);
-    padding: 5px;
-    border: solid var(--Black);
-    margin: 250px;
-    width: 95%;
-    height: 90%;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#playlistName{
+
+}
+
+#playlistImg {
+
+}
+
+#PlaylistLink{
+    
 }
 /* *------------------------------------------- */

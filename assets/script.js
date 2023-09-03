@@ -33,7 +33,7 @@ var genres = ["metal","jazz","pop","rock","country"];
 let ran1 = Math.floor(Math.random() * genres.length);
 let ran2 = Math.floor(Math.random() * moods.length);
 var userInfo = moods[ran2]+genres[ran1];
-
+console.log(userInfo);
 
 const url = "https://spotify23.p.rapidapi.com/search/?q="+userInfo+"&type=playlists&offset=0&limit=50&numberOfTopResults=5";
 const options = {
@@ -84,6 +84,7 @@ function cardConstructor(name,link,image){
     console.log("name",name);
     console.log("link",link);
     console.log("image",image);
+    let playlistContainer = document.querySelector(".PlaylistContainer");
 
     let Container = document.createElement("div");
     Container.setAttribute("id","playlistEl");
@@ -100,7 +101,10 @@ function cardConstructor(name,link,image){
 
     let playlistLink = document.createElement("a");
     playlistLink.setAttribute("href",link);
-    playlistLink.textContent
+    playlistLink.textContent = "Playlist link";
+    Container.appendChild(playlistLink);
+
+    playlistContainer.appendChild(Container);
 }
 
 
