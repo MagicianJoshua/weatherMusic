@@ -24,10 +24,11 @@
 
 
 
+var mood = {
+    rainy:"sad"
+}
 
-
-
-
+console.log(mood.rainy);
 var moods = ["Happy ","Sad ","Angry ","Anxious " ,"dreamy "];
 var genres = ["metal","jazz","pop","rock","country"];
 let ran1 = Math.floor(Math.random() * genres.length);
@@ -101,6 +102,7 @@ function cardConstructor(name,link,image){
 
     let playlistLink = document.createElement("a");
     playlistLink.setAttribute("href",link);
+    playlistLink.setAttribute("id","PlaylistLink");
     playlistLink.textContent = "Playlist link";
     Container.appendChild(playlistLink);
 
