@@ -33,7 +33,7 @@ var genres = ["metal","jazz","pop","rock","country"];
 let ran1 = Math.floor(Math.random() * genres.length);
 let ran2 = Math.floor(Math.random() * moods.length);
 var userInfo = moods[ran2]+genres[ran1];
-console.log(userInfo);
+
 
 const url = "https://spotify23.p.rapidapi.com/search/?q="+userInfo+"&type=playlists&offset=0&limit=50&numberOfTopResults=5";
 const options = {
@@ -55,12 +55,12 @@ fetch(url,options)
     let playlists = data.playlists.items;
     let playlistArray = [];
     for (let i = 0; i < playlists.length; i++){
-        console.log(i);
+       
         playlistArray.push(playlists[i].data);
 
     }
-    PlaylistRandomizer(playlistArray);
-    
+    let chosenList = PlaylistRandomizer(playlistArray);
+    cardConstructor(chosenList[0], chosenList[1],chosenList[2]);
 });
 
 
@@ -71,9 +71,9 @@ function PlaylistRandomizer(array){
     let chosenSong = array[random];
     //!for This array items are stored as follows, The playlist name, the playlist uri then the playlist picture;
     let nameUrlAndImage = [chosenSong.name,chosenSong.uri,chosenSong.images.items[0].sources[0].url]
-    console.log("name", nameUrlAndImage[0]);
-    console.log("Link", nameUrlAndImage[1]);
-    console.log("image", nameUrlAndImage[2]);
+    // console.log("name", nameUrlAndImage[0]);
+    // console.log("Link", nameUrlAndImage[1]);
+    // console.log("image", nameUrlAndImage[2]);
     return nameUrlAndImage;
 }
 
@@ -81,5 +81,8 @@ function PlaylistRandomizer(array){
 //*This is just a blank function for now but this it what we will use to build the spotify cards
 //*with our data.
 function cardConstructor(name,link,image){
-    
+    console.log("name",name);
+    console.log("link",link);
+    console.log("image",image);
+
 }
