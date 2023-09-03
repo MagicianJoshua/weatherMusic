@@ -1,4 +1,7 @@
-var userInfo = "sad"
+
+var genres = ["metal","jazz","pop","rock","country"];
+let ran = Math.floor(Math.random() * genres.length);
+var userInfo = "sad "+genres[ran];
 
 const url = "https://spotify23.p.rapidapi.com/search/?q="+userInfo+"&type=playlists&offset=0&limit=10&numberOfTopResults=5";
 const options = {
