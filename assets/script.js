@@ -1,11 +1,11 @@
 
+
 // lOGIC:
 // When we hit the searchbar. It will search for our input. If the input is blank, we will recieve an error
 // If the input is not blank, it will connect with the WeatherAPI to find the city that matches the name.
 // If there are multible cities with the same name, it will ask us to specify state/province.
 // This input will be stored in a variable.
 // 
-
 
 
 
@@ -85,4 +85,26 @@ function cardConstructor(name,link,image){
     console.log("link",link);
     console.log("image",image);
 
+    let Container = document.createElement("div");
+    Container.setAttribute("id","playlistEl");
+
+    let playlistHeader = document.createElement("h2");
+    playlistHeader.setAttribute("id","playlistName");
+    playlistHeader.textContent = name;
+    Container.appendChild(playlistHeader);
+
+    let playlistImg = document.createElement("img");
+    playlistImg.setAttribute("id","playlistImg");
+    playlistImg.setAttribute("src",image);
+    Container.appendChild(playlistImg);
+
+    let playlistLink = document.createElement("a");
+    playlistLink.setAttribute("")
 }
+
+
+// <div id="playlistEl">
+//             <h2 id="playlistName">Playlist Name</h2>
+//             <img id="playlistImg">
+//             <a id="PlaylistLink">Playlist</a>
+//         </div>
