@@ -39,7 +39,7 @@ function PlaylistRandomizer(array){
     
     let random = Math.floor(Math.random() * array.length);
     let chosenSong = array[random];
-    //!for This array items are stored as follows, THe playlist name, the playlist uri then the playlist picture;
+    //!for This array items are stored as follows, The playlist name, the playlist uri then the playlist picture;
     let nameUrlAndImage = [chosenSong.name,chosenSong.uri,chosenSong.images.items[0].sources[0].url]
     console.log("name", nameUrlAndImage[0]);
     console.log("Link", nameUrlAndImage[1]);
