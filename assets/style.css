@@ -100,13 +100,52 @@ border: solid var(--Black);
 
 
 
-#searchbarEl{
-    background-color: rgb(116, 112, 114);
-    width: 90%;
-    margin: 20px;
-    border: solid var(--Black);
+.searchbar {
+    width: 100%;
+    max-width: 300px;
+    display: inline-flex;
+    
 }
 
+.searchbar--max_width {
+    max-width: 100;
+}
+.searchbar__input {
+    flex-grow: 1;
+    padding: 10px;
+    outline: none;
+    border: 1px solid #009879;
+    border-radius: 5px 0 0 5px;
+    background: #f4faf9;
+    transition:  0.25s, box-shadow 0.25s;
+}
+
+.searcbar__input:focus {
+    background: white;
+    box-shadow: 0 0 2px #8cc6ba;
+}
+
+.searchbar__input::placeholder {
+    color: #8cc6ba;
+}
+
+.searhbar__button{
+    width: 40px;
+    background: #009879;
+    color: #ffffff;
+    outline: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    user-select: none;
+}
+
+.searchbar__button:active {
+    box-shadow: inset 0 0 30px black (0, 0, 0, 0.25);
+}
 
 /**This area is for the spotify playlist card */
 .PlaylistContainer{

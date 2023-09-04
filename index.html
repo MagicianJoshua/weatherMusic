@@ -6,6 +6,8 @@
     <title>Weather Music</title>
     <link rel="stylesheet" href="assets/style.css">
     <link rel="icon" href="assets/ImageAssets/MoodMusicIcon.png">
+    <link href="https://fonts.googleapis.com/icon?
+    family=Material+Icons">
 </head>
 <body>
     <header>
@@ -27,10 +29,17 @@
         </div>
         <div class="PlaylistContainer"></div>
         
-
-        <div id="searchbarEl">
-            <p>Searchbar</p>
-            <button class="btn">Search</button>
+        
+        
+        <form action="./" method="get">
+            <div class="searchbar">
+                <input type="text" 
+         class="searchbar__input>" name="search"
+         placeholder="City Name">
+                <button type="submit" 
+        class="searchbar__button">
+                <i class="Material-Icons">search</i>
+        
         </div>
     </section>
     <script src="assets/script.js"></script>
