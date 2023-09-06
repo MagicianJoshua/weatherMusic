@@ -10,6 +10,33 @@
 // VARS
 
 //MAIN FUNCTION
+var x = [];
+
+
+function weatherApi(city) {
+  let apiKey = "cf6175175fe5277a53e5cac601d3de9d";
+  let url = "https://api.openweathermap.org/data/2.5/weather?q="+ city +"&units=metric&appid=" + apiKey
+      return fetch(url)
+          .then((Response) => Response.json())
+          .then((data) => (data));
+   }
+  
+  
+ 
+  weatherApi("moncton").then(function (data){
+    console.log(data);
+  });
+
+
+  
+    
+   
+   
+
+  //  var moods = ["Happy ","Sad ","Angry ","Anxious " ,"dreamy "];
+  //             // sunny, rainy, thunderstorm, foggy,      
+              
+  // var weatherConditions = ["clear-sky", "few-clouds", "scattered-clouds", "broken-clouds", "shower-rain", "rain", "thunderstorm", "snow", "mist"];
 
 // * This array is randomized for now but eventually will correspond with the weather.
 var moods = ["Happy ", "Sad ", "Angry ", "Anxious ", "dreamy "];
@@ -30,7 +57,7 @@ const url =
 const options = {
   method: "GET",
   headers: {
-    "X-RapidAPI-Key": "c8f80cf195msh3b5b3adaae65223p13a6f2jsn0c73de500f39",
+    "X-RapidAPI-Key": "6eb0f56eacmsh4879f7ba423d0f6p1f0f15jsn0aec5d290516",
     "X-RapidAPI-Host": "spotify23.p.rapidapi.com",
   },
 };
@@ -69,9 +96,7 @@ function PlaylistRandomizer(array) {
 
 //*this function build the cards that will displayed dynamically on the webpage
 function cardConstructor(name, link, image) {
-  console.log("name", name);
-  console.log("link", link);
-  console.log("image", image);
+ 
   let playlistContainer = document.querySelector(".PlaylistContainer");
 
   let Container = document.createElement("div");
@@ -95,5 +120,8 @@ function cardConstructor(name, link, image) {
 
   playlistContainer.appendChild(Container);
 }
+
+
+
 
 

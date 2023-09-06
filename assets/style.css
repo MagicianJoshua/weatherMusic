@@ -156,6 +156,12 @@ border: solid var(--Black);
     border-radius: 25px;
 }
 
+.weather {
+    display: flex;
+    flex-direction: row;
+    margin: 50px, 50px, 50px, 0px;
+}
+
 #playlistEl{
     padding: 15px;
     display:flex;
