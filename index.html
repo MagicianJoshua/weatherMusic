@@ -17,13 +17,26 @@
     <section id="WeatherCardEl" class=" Main-Container flex-container-row">
         <div class="ImageClass">
         <div id="WeatherCardHeader" class=" flex-container-column">
+            
             <div id="WeatherIcon">
                 <img class='ImageClass' src="assets/ImageAssets/Weather_0000_Layer-2.png" alt="WeatherIcon">
             </div>
+            <form action="./" method="get">
+                <div class="searchbar" id="searchbarEl">
+                    <input type="text" 
+             class="searchbar__input>" name="search"
+             placeholder="City Name">
+                    <button type="submit" 
+            class="searchbar__button">
+                    <i class="Material-Icons">search</i>
+            
+            </div>
+    
             <div id="cityName">
                 <h2>CITYNAMEPLACEHOLDER</h2>
             </div>
         </div>
+        
 
 
         </div>
@@ -31,20 +44,10 @@
         
         
         
-        <form action="./" method="get">
-            <div class="searchbar">
-                <input type="text" 
-         class="searchbar__input>" name="search"
-         placeholder="City Name">
-                <button type="submit" 
-        class="searchbar__button">
-                <i class="Material-Icons">search</i>
-        
-        </div>
-
+       
         <div id="playlistEl">Main playlist div</div>
 
-        <div id="searchbarEl"><p>Searchbar</p></div>
+        
     </section>
     <script src="assets/script.js"></script>
 </body>
