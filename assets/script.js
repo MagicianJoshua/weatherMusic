@@ -8,9 +8,41 @@
 //ATTRIBUTES
 
 // VARS
+const url = "https://spotify23.p.rapidapi.com/search/?q=" +
+  userInfo + "&type=playlists&offset=0&limit=50&numberOfTopResults=5";
+  const options = {
+  method: "GET",
+  headers: {
+    "X-RapidAPI-Key": "6eb0f56eacmsh4879f7ba423d0f6p1f0f15jsn0aec5d290516",
+    "X-RapidAPI-Host": "spotify23.p.rapidapi.com",
+  },
+}
+// * This array is randomized for now but eventually will correspond with the weather.
+var moods = ["Happy ", "Sad ", "Angry ", "Anxious ", "dreamy "];
+var genres = ["metal", "jazz", "pop", "rock", "country"];
+let ran1 = Math.floor(Math.random() * genres.length);
+let ran2 = Math.floor(Math.random() * moods.length);
+var userInfo = moods[ran2] + genres[ran1];
+var searchBtn = document.querySelector(".searchbar__button");
 
+searchBtn.addEventListener("click", function(event){
+  event.preventDefault();
+  fetch(url, options)
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (data) {
+    let playlists = data.playlists.items;
+    let playlistArray = [];
+    for (let i = 0; i < playlists.length; i++) {
+      playlistArray.push(playlists[i].data);
+    }
+    let chosenList = PlaylistRandomizer(playlistArray);
+    cardConstructor(chosenList[0], chosenList[1], chosenList[2]);
+  });
+})
 //MAIN FUNCTION
-var x = [];
+
 
 
 function weatherApi(city) {
@@ -38,45 +70,19 @@ function weatherApi(city) {
               
   // var weatherConditions = ["clear-sky", "few-clouds", "scattered-clouds", "broken-clouds", "shower-rain", "rain", "thunderstorm", "snow", "mist"];
 
-// * This array is randomized for now but eventually will correspond with the weather.
-var moods = ["Happy ", "Sad ", "Angry ", "Anxious ", "dreamy "];
-var genres = ["metal", "jazz", "pop", "rock", "country"];
 
 
-let ran1 = Math.floor(Math.random() * genres.length);
-let ran2 = Math.floor(Math.random() * moods.length);
-var userInfo = moods[ran2] + genres[ran1];
+
+
 console.log(userInfo);
 
 
 //*this is the url that we are using to search for the spotify playlists
-const url =
-  "https://spotify23.p.rapidapi.com/search/?q=" +
-  userInfo + //!This is the user info which combines the genre they choose and the mood based off the weather.
-  "&type=playlists&offset=0&limit=50&numberOfTopResults=5";
-const options = {
-  method: "GET",
-  headers: {
-    "X-RapidAPI-Key": "6eb0f56eacmsh4879f7ba423d0f6p1f0f15jsn0aec5d290516",
-    "X-RapidAPI-Host": "spotify23.p.rapidapi.com",
-  },
-};
+
 
 
 //*this is the fetch option that gets the data from the url.
-fetch(url, options)
-  .then(function (response) {
-    return response.json();
-  })
-  .then(function (data) {
-    let playlists = data.playlists.items;
-    let playlistArray = [];
-    for (let i = 0; i < playlists.length; i++) {
-      playlistArray.push(playlists[i].data);
-    }
-    let chosenList = PlaylistRandomizer(playlistArray);
-    cardConstructor(chosenList[0], chosenList[1], chosenList[2]);
-  });
+
 
 //*This function takes in the array we get from spotify and spits out a song object with a url and an image.
 function PlaylistRandomizer(array) {
