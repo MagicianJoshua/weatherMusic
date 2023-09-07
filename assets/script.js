@@ -8,10 +8,7 @@
 //ATTRIBUTES
 
 // VARS
-
-//MAIN FUNCTION
-
-// * This array is randomized for now but eventually will correspond with the weather.
+var searchBtn = document.querySelector(".searchbar__button");
 var moods = ["Happy ", "Sad ", "Angry ", "Anxious ", "dreamy "];
 var genres = ["metal", "jazz", "pop", "rock", "country"];
 
@@ -34,10 +31,9 @@ const options = {
     "X-RapidAPI-Host": "spotify23.p.rapidapi.com",
   },
 };
-
-
-//*this is the fetch option that gets the data from the url.
-fetch(url, options)
+searchBtn.addEventListener("click", function(event){
+  event.preventDefault();
+  fetch(url, options)
   .then(function (response) {
     return response.json();
   })
@@ -50,6 +46,15 @@ fetch(url, options)
     let chosenList = PlaylistRandomizer(playlistArray);
     cardConstructor(chosenList[0], chosenList[1], chosenList[2]);
   });
+})
+//MAIN FUNCTION
+
+// * This array is randomized for now but eventually will correspond with the weather.
+
+
+
+//*this is the fetch option that gets the data from the url.
+
 
 //*This function takes in the array we get from spotify and spits out a song object with a url and an image.
 function PlaylistRandomizer(array) {
