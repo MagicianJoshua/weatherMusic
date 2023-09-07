@@ -5,6 +5,9 @@
  --White: #ffffff;
  --Gray: #858585;
  --skyBlue: #77e0e7;
+ --sunsetRed: -webkit-linear-gradient(rgb(241, 12, 58), rgb(216, 126, 36));
+ --Orange: rgb(208, 101, 24);
+ 
 }
 
 header{
@@ -12,28 +15,7 @@ header{
     justify-content: center;
     height: 110px;
     width: 100%;
-    border-bottom: solid var(--White);
-}
-
-body {
-    background-color: rgb(54, 54, 54);
-
-}
-
-h1{
-    font-size: 95px;
-    color: var(--White);
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    margin-bottom: 5px;
-    margin-top: 5px;
-}
-
-h2{
-    font-size: 15px;
-    color: var(--White);
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    margin: 20px;
-
+    border-bottom: solid var(--Orange);
 }
 
 
@@ -41,13 +23,6 @@ h2{
     width: 100%;
 }
 
-header{
-    display:flex;
-    justify-content: center;
-    height: 110px;
-    width: 100%;
-    border-bottom: solid var(--White);
-}
 
 body {
     background-color: rgb(0, 0, 0);
@@ -60,19 +35,22 @@ h1{
     font-family: Georgia, 'Times New Roman', Times, serif;
     margin-bottom: 5px;
     margin-top: 5px;
+    background: var(--sunsetRed);
+    /* Linear Gradient Effect added to h1 */
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
 }
 
 h2{
     font-size: 15px;
-    color: var(--White);
+    color: var(--Black);
     font-family: Georgia, 'Times New Roman', Times, serif;
     margin: 20px;
 
-}
-
+} 
 .ImageClass{
     width: 50%;
-    height: auto%;
+    height: auto;
 }
 
 .Main-Container{
@@ -125,13 +103,6 @@ border-bottom-right-radius: 25px;
     padding: 10px;
     border-radius: 5px;
     flex: 5;
-}
-
-#playlistEl{
-    padding: 5px;
-    margin: 250px;
-    width: 95%;
-    height: 90%;
 }
 
 .searchbar {
@@ -199,6 +170,11 @@ border-bottom-right-radius: 25px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+        padding: 5px;
+        margin: 250px;
+        width: 95%;
+        height: 90%;
+    
 }
 
 #playlistName{
