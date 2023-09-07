@@ -153,4 +153,4 @@ function cardConstructor(name, link, image) {
   Container.appendChild(playlistLink);
 
   playlistContainer.appendChild(Container);
-
+}

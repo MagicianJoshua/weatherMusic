@@ -36,9 +36,9 @@ h2{
 
 }
 
-.ImageClass{
-    width: 100%;
 
+.StandardizeSize{
+    width: 100%;
 }
 
 header{
@@ -50,7 +50,7 @@ header{
 }
 
 body {
-    background-color: rgb(54, 54, 54);
+    background-color: rgb(0, 0, 0);
 
 }
 
@@ -71,33 +71,30 @@ h2{
 }
 
 .ImageClass{
-    width: 100%;
-    height: 100%;
+    width: 50%;
+    height: auto%;
 }
 
 .Main-Container{
-background: linear-gradient(to bottom, var(--skyBlue), var(--White));
+/* background: linear-gradient(to bottom, var(--skyBlue), var(--White)); */
+background: linear-gradient(to bottom, var(--skyBlue), rgba(255, 255, 255, 0));
 width: 100%;
 height: 100%;
-border: solid pink;
 max-width: 500px;
 margin: 50px auto;
+border-top-right-radius: 10px;
+border-top-left-radius: 10px;
+border-bottom-left-radius: 25px;
+border-bottom-right-radius: 25px;
 }
 
-.flex-container-row{
-display: flex;
-justify-content: center;
-align-items: center;
-flex-direction: column;
-border: solid var(--White);
-}
 
 .flex-container-column{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    border: solid var(--Black);
+
     }
 
 
@@ -122,35 +119,25 @@ border: solid var(--White);
 #WeatherCardHeader{
     display: flex;
     flex-direction: row;
-    margin: 50px, 50px, 0px, 50px;
+    justify-content: space-between;
+    align-items: center;
+    margin: 50px, 25px, 10px, 50px;
+    padding: 10px;
     border-radius: 5px;
-    flex: 3;
+    flex: 5;
 }
 
 #playlistEl{
-    background-color: rgb(134, 120, 148);
     padding: 5px;
-    border: solid var(--Black);
     margin: 250px;
     width: 95%;
     height: 90%;
 }
-    flex: 3;
-}
-
-
-
-
-
-
-
-
 
 .searchbar {
     width: 100%;
     max-width: 300px;
-    display: inline-flex;
-    
+    display: flex;
 }
 
 .searchbar--max_width {
@@ -195,9 +182,8 @@ border: solid var(--White);
 
 /**This area is for the spotify playlist card */
 .PlaylistContainer{
-    background-color:rgb(134, 120, 148) ;
-    border:solid black;
-    margin:25px;
+    background-color:rgb(255, 255, 255) ;
+    margin: 60px;
     width: 75%;
     border-radius: 25px;
 }
@@ -209,9 +195,9 @@ border: solid var(--White);
 }
 
 #playlistEl{
-    padding: 15px;
     display:flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
 }
 
