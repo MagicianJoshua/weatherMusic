@@ -136,8 +136,32 @@ border: solid var(--White);
     height: 90%;
 }
 
+#searchAndName{
+    display: flex;
+    
+    flex-direction: column;
+    align-items: center;
+   
+    background-color: black;
+    
+}
 
+#cityNameHeader{
+    color: black;
+    font-size: larger;
+  
+}
 
+#weatherIcon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+#weatherIconImage{
+    display: none;
+}
 
 
 
