@@ -5,37 +5,48 @@
 // If there are multible cities with the same name, it will ask us to specify state/province.
 // This input will be stored in a variable.
 
-// 
+var cityImage;
 
 
+function pullCityPhoto(name){
+  var cityURL = 'https://api.teleport.org/api/urban_areas/slug:' + name + '/images/'
+  // console.log(cityURL);
+  return fetch(cityURL)
+    .then(function (response){
+      return response.json();
+  }).then(function (data) {
+    return data
+  })
+  .catch(error => {
+    // console.error(error);
+    randomPhoto();
+  })
+}
+
+pullCityPhoto('quebec').then(function (data){
+  // console.log("Current",data.photos[0].image.web);
+  cityImage = data.photos[0];
+  // console.log("CITY IMAGE", cityImage);
+  renderCityPhoto(cityImage);
+})
+
+function renderCityPhoto(image){
+  // console.log(image)
+  var backGroundImage = document.getElementById("image-background");
+  backGroundImage.appendChild(image);
+}
+
+// Need to understand structure above. Go through with the Wizard aka Joshua to figure this piece out.
 
 
+function randomPhoto(){
+  console.log('error: NO IMAGE FOUND IN pullCityPhoto function')
+// This function will pull a random local image when the Photo API fails.
+}
+
+// https://api.teleport.org/api/urban_areas/slug:san-francisco-bay-area/images/
 
 
-
-
-//ATTRIBUTES
-
-
-// VARS
-
-
-
-//MAIN FUNCTION
-
-
-
-
-
-
-
-//EVENT HANDLERS
-
-//
-
-//ATTRIBUTES
-
-// VARS
 const url = "https://spotify23.p.rapidapi.com/search/?q=" +
   userInfo + "&type=playlists&offset=0&limit=50&numberOfTopResults=5";
   const options = {
@@ -69,9 +80,6 @@ searchBtn.addEventListener("click", function(event){
     cardConstructor(chosenList[0], chosenList[1], chosenList[2]);
   });
 })
-//MAIN FUNCTION
-
-
 
 function weatherApi(city) {
   let apiKey = "cf6175175fe5277a53e5cac601d3de9d";
