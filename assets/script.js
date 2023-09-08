@@ -23,8 +23,9 @@ var weather = {
   icon:null,
   temp:null,
   description:null,
-
 }
+
+var searchBar = document.querySelector(".searchbar__input");
 
 var weatherIcon = document.querySelector("#weatherIcon");
 var weatherHeaderEl = document.querySelector("#cityNameHeader");
@@ -46,11 +47,27 @@ searchBtn.addEventListener("click", function (event) {
       let chosenList = PlaylistRandomizer(playlistArray);
       cardConstructor(chosenList[0], chosenList[1], chosenList[2]);
     });
+
+    //!This is calling the weather api function
+weatherApi(searchBar.value).then(function (data) {
+  console.log(data);
+  weather.icon = data.weather[0].icon;
+  weather.name = data.name;
+  weather.temp = data.main.temp;
+  weather.description = data.weather[0].description
+
+  let icon = weather.icon;
+  let iconUrl = "https://openweathermap.org/img/wn/"+icon+"@2x.png"
+  weatherIcon.setAttribute("src",iconUrl)
+  weatherHeaderEl.textContent = weather.name;
+  // cityNamePEl.textContent = weather.description;
+});
 });
 //MAIN FUNCTION
 
 //this is the weatherApi function
 function weatherApi(city) {
+  console.log("Current",city);
   let apiKey = "cf6175175fe5277a53e5cac601d3de9d";
   let url =
     "https://api.openweathermap.org/data/2.5/weather?q=" +
@@ -62,20 +79,7 @@ function weatherApi(city) {
     .then((data) => data);
 }
 
-//!This is calling the weather api function
-// weatherApi("moncton").then(function (data) {
-//   console.log(data);
-//   weather.icon = data.weather[0].icon;
-//   weather.name = data.name;
-//   weather.temp = data.main.temp;
-//   weather.description = data.weather[0].description
 
-//   let icon = weather.icon;
-//   let iconUrl = "https://openweathermap.org/img/wn/"+icon+"@2x.png"
-//   weatherIcon.setAttribute("src",iconUrl)
-//   weatherHeaderEl.textContent = weather.name;
-//   cityNamePEl.textContent = weather.description;
-// });
 
 
 

@@ -16,53 +16,31 @@
         <h1>MoodMusic.com</h1>
     </header>
 
-    <section id="WeatherCardEl" class=" Main-Container flex-container-row">
-        <div class="ImageClass">
-            <div id="WeatherCardHeader" class=" flex-container-column">
-
+    <section id="WeatherCardEl" class=" Main-Container">
+        <div class="StandardizeSize">
+            <div id="WeatherCardHeader">
                 <div id="WeatherIcon">
-                    <figure>
-                        <img class='ImageClass' id="weatherIconImage" src=""
-                            alt="WeatherIcon">
-                        <figcaption id="cityNameP"></figcaption>
-                    </figure>
+                    <img class='ImageClass' id="weatherIcon"   src="assets/ImageAssets/MoodMusicIcon.png" alt="WeatherIcon">
                 </div>
-                <div id="searchAndName">
-                    <div id="cityName">
-                        <h2 id="cityNameHeader"></h2>
-
+                <form action="./" method="get">
+                    <div class="searchbar" id="searchbarEl">
+                        <input type="text" class="searchbar__input" name="search" placeholder="City Name">
+                        <button type="submit" class="searchbar__button">
+                            <i class="Material-Icons">search</i>
                     </div>
-                    <form action="./" method="get">
-                        <div class="searchbar" id="searchbarEl">
-                            <input type="text" class="searchbar__input" name="search" placeholder="City Name">
-                            <button type="submit" class="searchbar__button">
-                                <i class="Material-Icons">search</i>
-
-                        </div>
-                </div>
-
-
+                    <div id="cityName">
+                        <h2 id="cityNameHeader">CITYNAMEPLACEHOLDER</h2>
+                    </div>
             </div>
-
-
-
-
-
+        <div class="PlaylistContainer flex-container-column">
+            <div id="playlistEl" >Main playlist div</div>
         </div>
-        <div class="PlaylistContainer"></div>
-
-
-
-
-        <!-- <div id="playlistEl">Main playlist div</div> -->
-
-
-
     </section>
+
     <script src="assets/script.js"></script>
-    <!--     <video autoplay muted loop id="video-background" src="assets/ImageAssets/pexels_videos_1722697 (2160p).mp4" type="video/mp4"></video> -->
+<!--     <video autoplay muted loop id="video-background" src="assets/ImageAssets/pexels_videos_1722697 (2160p).mp4" type="video/mp4"></video> -->
 
-
+          
 </body>
 
 </html>
