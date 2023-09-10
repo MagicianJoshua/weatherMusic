@@ -1,7 +1,65 @@
 //this is the url for the spotify api
-const url =
+
+
+// * This array is randomized for now but eventually will correspond with the weather.
+var moods = ["Happy ", "Sad ", "Angry ", "Anxious ", "dreamy"];
+var genres = ["metal", "jazz", "pop", "rock", "country"];
+let ran1 = Math.floor(Math.random() * genres.length);
+let ran2 = Math.floor(Math.random() * moods.length);
+var userInfo = [];
+var playlistSearch = document.querySelector("#fullSearch");
+var searchBtn = document.querySelector(".searchbar__button");
+var weather = {
+  name: null,
+  icon: null,
+  temp: null,
+  description: null,
+  main: null,
+};
+
+var genreContainer = document.querySelector(".genreContainer")
+var genreHeaderEl = document.querySelector("#genreHeader");
+var genreUserChoice = [];
+var weatherDescription;
+var searchBar = document.querySelector(".searchbar__input");
+var genreEl = document.querySelector("#genreEl");
+var weatherIcon = document.querySelector("#weatherIcon");
+var weatherHeaderEl = document.querySelector("#cityNameHeader");
+var cityNamePEl = document.querySelector("#cityNameP");
+var moods = {
+  clear: "happy",
+  "broken clouds": "anxious",
+};
+
+
+//This is creating all the genre buttons
+for (let i = 0; i < genres.length; i++) {
+  let btn = document.createElement("button");
+  btn.textContent = genres[i];
+  btn.setAttribute("id", genres[i]);
+  btn.setAttribute("class", "genreBtn");
+  btn.addEventListener("click", function (event) {
+    event.preventDefault();
+    let genre = this.getAttribute("id");
+    genreUserChoice.push(genre);
+
+    if (genreUserChoice.length > 1) {
+      let removeChoice = genreUserChoice.shift();
+    }
+    userInfo[1] = genreUserChoice[0];
+    genreHeaderEl.textContent = "Current selected genre: " + genreUserChoice[0];
+    
+  });
+
+  genreEl.appendChild(btn);
+}
+
+playlistSearch.addEventListener("click", function (event) {
+  event.preventDefault();
+  let searchChoice = searchPlaylist();
+  const url =
   "https://spotify23.p.rapidapi.com/search/?q=" +
-  userInfo +
+  searchChoice +
   "&type=playlists&offset=0&limit=50&numberOfTopResults=5";
 const options = {
   method: "GET",
@@ -10,31 +68,9 @@ const options = {
     "X-RapidAPI-Host": "spotify23.p.rapidapi.com",
   },
 };
+  
 
-// * This array is randomized for now but eventually will correspond with the weather.
-var moods = ["Happy ", "Sad ", "Angry ", "Anxious ", "dreamy "];
-var genres = ["metal", "jazz", "pop", "rock", "country"];
-let ran1 = Math.floor(Math.random() * genres.length);
-let ran2 = Math.floor(Math.random() * moods.length);
-var userInfo = moods[ran2] + genres[ran1];
-var searchBtn = document.querySelector(".searchbar__button");
-var weather = {
-  name:null,
-  icon:null,
-  temp:null,
-  description:null,
-}
-
-var searchBar = document.querySelector(".searchbar__input");
-
-var weatherIcon = document.querySelector("#weatherIcon");
-var weatherHeaderEl = document.querySelector("#cityNameHeader");
-var cityNamePEl = document.querySelector("#cityNameP");
-
-
-searchBtn.addEventListener("click", function (event) {
-  event.preventDefault();
-  fetch(url, options)
+fetch(url, options)
     .then(function (response) {
       return response.json();
     })
@@ -47,27 +83,38 @@ searchBtn.addEventListener("click", function (event) {
       let chosenList = PlaylistRandomizer(playlistArray);
       cardConstructor(chosenList[0], chosenList[1], chosenList[2]);
     });
-
-    //!This is calling the weather api function
-weatherApi(searchBar.value).then(function (data) {
-  console.log(data);
-  weather.icon = data.weather[0].icon;
-  weather.name = data.name;
-  weather.temp = data.main.temp;
-  weather.description = data.weather[0].description
-
-  let icon = weather.icon;
-  let iconUrl = "https://openweathermap.org/img/wn/"+icon+"@2x.png"
-  weatherIcon.setAttribute("src",iconUrl)
-  weatherHeaderEl.textContent = weather.name;
-  // cityNamePEl.textContent = weather.description;
 });
+
+searchBtn.addEventListener("click", function (event) {
+  event.preventDefault();
+  console.log(searchBar.value)
+  weatherApi(searchBar.value).then(function (data) {
+    weather.icon = data.weather[0].icon;
+    console.log(weather.icon);
+    weather.name = data.name;
+    weather.temp = data.main.temp;
+    weather.description = data.weather[0].description;
+    weather.main = data.weather[0].main.toLowerCase();
+    let icon = weather.icon;
+    let iconUrl = "https://openweathermap.org/img/wn/" + icon + "@2x.png";
+    weatherIcon.setAttribute("src", iconUrl);
+    weatherHeaderEl.textContent = weather.name;
+  });
+
+
+  
+
+
+
+  //this is fetching for spotify
+  
+ 
+  
+
 });
-//MAIN FUNCTION
 
 //this is the weatherApi function
 function weatherApi(city) {
-  console.log("Current",city);
   let apiKey = "cf6175175fe5277a53e5cac601d3de9d";
   let url =
     "https://api.openweathermap.org/data/2.5/weather?q=" +
@@ -78,11 +125,6 @@ function weatherApi(city) {
     .then((Response) => Response.json())
     .then((data) => data);
 }
-
-
-
-
-
 
 //  var moods = ["Happy ","Sad ","Angry ","Anxious " ,"dreamy "];
 //             // sunny, rainy, thunderstorm, foggy,
@@ -133,4 +175,12 @@ function cardConstructor(name, link, image) {
   Container.appendChild(playlistLink);
 
   playlistContainer.appendChild(Container);
+  playlistContainer.style.display = "flex"
+}
+
+function searchPlaylist() {
+  userInfo[0] = "happy";
+  let userChoice = userInfo.join(" ");
+  genreContainer.style.display = "none";
+  return userChoice;
 }

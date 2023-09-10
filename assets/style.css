@@ -22,7 +22,7 @@ header{
 .StandardizeSize{
     width: 100%;
 }
-
+ 
 
 body {
     background-color: rgb(0, 0, 0);
@@ -129,6 +129,44 @@ border-bottom-right-radius: 25px;
     box-shadow: 0 0 2px #8cc6ba;
 }
 
+/*  */
+.genreContainer{
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+    align-items: center;
+    
+}
+#fullSearch {
+    width: 450px;
+    margin: 5px;
+    border-radius: 10px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    background-color: lightgreen;
+}
+.genreBtn {
+    width: 450px;
+    margin: 5px;
+    border-radius: 10px;
+    height: 45px;
+}
+
+#genreEl {
+    display: flex;
+    flex-direction: column;
+
+}
+
+#genreHeader {
+    font-size: large;
+    color: white;
+}
+/*  */
+
 .searchbar__input::placeholder {
     color: #8cc6ba;
 }
@@ -156,7 +194,9 @@ border-bottom-right-radius: 25px;
     background-color:rgb(255, 255, 255) ;
     margin: 60px;
     width: 75%;
+    height: 450px;
     border-radius: 25px;
+    display: none;
 }
 
 .weather {
