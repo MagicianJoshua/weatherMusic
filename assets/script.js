@@ -15,14 +15,38 @@
 
 
 //ATTRIBUTES
+// let button = document.querySelector('.button')
+// let inputvalue = document.querySelector('.inputvalue')
+// let nameVal = document.querySelector('.name');
+// let temp = document.querySelector('.temp');
+// let desc = document.querySelector('.desc');
 
 
-// VARS
+// // VARS
 
 
 
-//MAIN FUNCTION
+// //MAIN FUNCTION
+// button.addEventListener('click', function(){
+  
+//   //Fection data from open Weather API
+//   fetch('https://api.openweathermap.org/data/2.5/weather?q=$(inputvalue.value)&units=metric&api=cf6175175fe5277a53e5')
+//   .then(response => response.json())
+//   .then(
+//     displayData)
+//   .catch(err => alert('Wrong City name'));
 
+
+// })
+
+
+// // Function to display weather on html document
+
+// const displayData=(weather)=>{
+//   temp.innerText='${weather.main.temp}\u2103C'
+//   desc.innerText='${weather.weather[0].main}'
+// }
+  
 
 
 
@@ -45,6 +69,8 @@ const url = "https://spotify23.p.rapidapi.com/search/?q=" +
     "X-RapidAPI-Host": "spotify23.p.rapidapi.com",
   },
 }
+
+
 // * This array is randomized for now but eventually will correspond with the weather.
 var moods = ["Happy ", "Sad ", "Angry ", "Anxious ", "dreamy "];
 var genres = ["metal", "jazz", "pop", "rock", "country"];
@@ -52,6 +78,23 @@ let ran1 = Math.floor(Math.random() * genres.length);
 let ran2 = Math.floor(Math.random() * moods.length);
 var userInfo = moods[ran2] + genres[ran1];
 var searchBtn = document.querySelector(".searchbar__button");
+var weather = {
+  name:null,
+  icon:null,
+  temp:null,
+  description:null,
+}
+
+var moods = {
+  "thunder":"angry",
+  "sunshine":"happy",
+  "partly-cloudy":"mleancholy",
+  "overcast": "sad",
+  "raining":"contemplative",
+  "snowing":"christmas",
+  "foggy":"sad",
+} "windy":"distressed",
+
 
 searchBtn.addEventListener("click", function(event){
   event.preventDefault();
@@ -82,14 +125,24 @@ function weatherApi(city) {
    }
   
   
- 
-  weatherApi("moncton").then(function (data){
-    console.log(data);
+weatherApi("toronto").then(function (data){
+    weather.icon = data.weather[0].icon;
+    weather.name = data.name
+    weather.temp = data.main.temp
+    weather.description = data.weather[0].description
+    weather.main = data.weather[0].main.toLowerCase();
+    console.log("Current weather",weather.description)
   });
 
 
+
+
+// var object = {
+//   weather : "rainy"
+// }
   
     
+// console.log(object.weather)
    
    
 
@@ -153,4 +206,4 @@ function cardConstructor(name, link, image) {
   Container.appendChild(playlistLink);
 
   playlistContainer.appendChild(Container);
-
+}
