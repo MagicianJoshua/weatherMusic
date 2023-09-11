@@ -43,59 +43,10 @@ h2{
 
 }
 
-header{
-    display:flex;
-    justify-content: center;
-    height: 110px;
-    width: 100%;
-    border-bottom: solid var(--Orange);
-}
-
-
-
 .StandardizeSize{
     width: 100%;
 }
 
-header{
-    display:flex;
-    justify-content: center;
-    height: 110px;
-
-    width: 100%;
-}
- 
-
-body {
-    background-color: rgb(0, 0, 0);
-
-}
-
-h1{
-    font-size: 95px;
-    color: var(--White);
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    margin-bottom: 5px;
-    margin-top: 5px;
-    background: var(--sunsetRed);
-    
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-}
-
-h2{
-    font-size: 15px;
-    color: var(--Black);
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    margin: 20px;
-
-} 
-.ImageClass{
-    width: 50%;
-
-    height: auto%;
-
-}
 
 .Main-Container{
 background: linear-gradient(to bottom, var(--skyBlue), var(--White));
@@ -324,6 +275,5 @@ border: solid var(--White);
 
 #PlaylistLink{
     margin:25px;
-    
     color:black;
 }
