@@ -102,7 +102,9 @@ searchBtn.addEventListener("click", function (event) {
     genreEl.appendChild(btn);
   }
   pullCityPhoto(searchBar.value)
+
   .done(function (data) {
+
   cityImage = data.photos[0];
   renderCityPhoto(cityImage);
 });
@@ -163,6 +165,7 @@ function pullCityPhoto(name) {
     return response
   })
 }
+
 
 
 function renderCityPhoto(image) {
