@@ -1,21 +1,12 @@
-//this is the url for the spotify api
-
-
-
-// * This array is randomized for now but eventually will correspond with the weather.
-
-
 var playlistSearch = document.querySelector("#fullSearch");
 var searchBtn = document.querySelector(".searchbar__button");
 var genreContainer = document.querySelector(".genreContainer")
 var genreHeaderEl = document.querySelector("#genreHeader");
-
 var searchBar = document.querySelector(".searchbar__input");
 var genreEl = document.querySelector("#genreEl");
 var weatherIcon = document.querySelector("#weatherIcon");
 var weatherHeaderEl = document.querySelector("#cityNameHeader");
 var cityNamePEl = document.querySelector("#cityNameP");
-
 var weatherDescription;
 var cityImage;
 var genreUserChoice = [];
@@ -34,6 +25,23 @@ var weather = {
   description: null,
   main: null,
 };
+
+var moods = {
+  "thunderstorm":"angry",
+  "drizzle":"sad",
+  "rain":"melancholy",
+  "snow": "christmas",
+  "mist":"calm",
+  "smoke":"uneasy",
+  "haze":"tranquil",
+  "dust":"afraid",
+  "fog":"ominous",
+  "sand":"relaxed",
+  "ash":"tense",
+  "squall":"nervous",
+  "tornado":"stressed",
+  "clear":"happy",
+}
 
 for (let i = 0; i < genres.length; i++) {
   let btn = document.createElement("button");
@@ -82,13 +90,13 @@ playlistSearch.addEventListener("click", function (event) {
   "https://spotify23.p.rapidapi.com/search/?q=" +
   searchChoice +
   "&type=playlists&offset=0&limit=50&numberOfTopResults=5";
-const options = {
+  const options = {
         method: "GET",
-  headers: {
-    "X-RapidAPI-Key": "6eb0f56eacmsh4879f7ba423d0f6p1f0f15jsn0aec5d290516",
-    "X-RapidAPI-Host": "spotify23.p.rapidapi.com",
-  },
-};
+        headers: {
+        "X-RapidAPI-Key": "6eb0f56eacmsh4879f7ba423d0f6p1f0f15jsn0aec5d290516",
+        "X-RapidAPI-Host": "spotify23.p.rapidapi.com",
+    },
+  };
 
     fetch(url, options)
         .then(function (response) {
@@ -142,12 +150,6 @@ function randomPhoto(){
   backGroundImage.src = "assets/ImageAssets/PlaceholderBackground.PNG";
 //Aston: This function will pull a random local image when the Photo API fails.
 }
-
-
-
-  
-
-
 
 
 //this is the weatherApi function
@@ -208,6 +210,7 @@ function cardConstructor(name, link, image) {
   playlistContainer.style.display = "flex"
 }
 
+
 function searchPlaylist() {
   userInfo[0] = "happy";
   let userChoice = userInfo.join(" ");
@@ -215,3 +218,4 @@ function searchPlaylist() {
   return userChoice;
 
 }
+

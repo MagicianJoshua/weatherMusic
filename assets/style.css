@@ -14,6 +14,40 @@ header{
     justify-content: center;
     height: 110px;
     width: 100%;
+    border-bottom: solid var(--White);
+}
+
+body {
+    background-color: rgb(54, 54, 54);
+
+}
+
+h1{
+    font-size: 95px;
+    color: var(--White);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+h2{
+    font-size: 15px;
+    color: var(--White);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin: 20px;
+
+}
+
+.ImageClass{
+    width: 100%;
+
+}
+
+header{
+    display:flex;
+    justify-content: center;
+    height: 110px;
+    width: 100%;
     border-bottom: solid var(--Orange);
 }
 
@@ -64,8 +98,7 @@ h2{
 }
 
 .Main-Container{
-/* background: linear-gradient(to bottom, var(--skyBlue), var(--White)); */
-background: linear-gradient(to bottom, var(--skyBlue), rgba(255, 255, 255, 0));
+background: linear-gradient(to bottom, var(--skyBlue), var(--White));
 width: 100%;
 height: 100%;
 max-width: 500px;
@@ -74,6 +107,15 @@ border-top-right-radius: 10px;
 border-top-left-radius: 10px;
 border-bottom-left-radius: 25px;
 border-bottom-right-radius: 25px;
+}
+
+
+.flex-container-row{
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+border: solid var(--White);
 }
 
 
@@ -107,13 +149,26 @@ border-bottom-right-radius: 25px;
 #WeatherCardHeader{
     display: flex;
     flex-direction: row;
+
     justify-content: space-between;
     align-items: center;
     margin: 50px, 25px, 10px, 50px;
     padding: 10px;
     border-radius: 5px;
     flex: 5;
+
 }
+
+#playlistEl{
+    background-color: rgb(134, 120, 148);
+    padding: 5px;
+    border: solid var(--Black);
+    margin: 250px;
+    width: 95%;
+    height: 90%;
+}
+    
+
 
 
 #playlistEl{
@@ -229,6 +284,12 @@ border-bottom-right-radius: 25px;
     height: 450px;
     border-radius: 25px;
     display: none;
+}
+
+.weather {
+    display: flex;
+    flex-direction: row;
+    margin: 50px, 50px, 50px, 0px;
 }
 
 .weather {
