@@ -100,17 +100,6 @@ searchBtn.addEventListener("click", function (event) {
     weatherIcon.setAttribute("src", iconUrl);
     weatherHeaderEl.textContent = weather.name;
   });
-
-
-  
-
-
-
-  //this is fetching for spotify
-  
- 
-  
-
 });
 
 //this is the weatherApi function
@@ -126,14 +115,7 @@ function weatherApi(city) {
     .then((data) => data);
 }
 
-//  var moods = ["Happy ","Sad ","Angry ","Anxious " ,"dreamy "];
-//             // sunny, rainy, thunderstorm, foggy,
 
-// var weatherConditions = ["clear-sky", "few-clouds", "scattered-clouds", "broken-clouds", "shower-rain", "rain", "thunderstorm", "snow", "mist"];
-
-//*this is the url that we are using to search for the spotify playlists
-
-//*this is the fetch option that gets the data from the url.
 
 //*This function takes in the array we get from spotify and spits out a song object with a url and an image.
 function PlaylistRandomizer(array) {
