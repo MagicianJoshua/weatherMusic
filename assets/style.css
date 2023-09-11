@@ -78,7 +78,7 @@ h1{
     margin-bottom: 5px;
     margin-top: 5px;
     background: var(--sunsetRed);
-    /* Linear Gradient Effect added to h1 */
+    
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
 }
