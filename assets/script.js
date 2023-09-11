@@ -67,10 +67,7 @@ searchBtn.addEventListener("click", function (event) {
     let iconUrl = "https://openweathermap.org/img/wn/" + icon + "@2x.png";
     weatherIcon.setAttribute("src", iconUrl);
     weatherHeaderEl.textContent = weather.name;
-    pullCityPhoto(searchBar.value).then(function (data) {
-      cityImage = data.photos[0];
-      renderCityPhoto(cityImage);
-    });
+   
   });
 
   genreHeaderEl.style.display = "flex";
@@ -94,6 +91,11 @@ searchBtn.addEventListener("click", function (event) {
     });
     genreEl.appendChild(btn);
   }
+  pullCityPhoto(searchBar.value)
+.done(function (data) {
+  cityImage = data.photos[0];
+  renderCityPhoto(cityImage);
+});
 });
 
 playlistSearch.addEventListener("click", function (event) {
@@ -139,19 +141,35 @@ function searchPlaylist() {
 // a city (free API so it only has major cities). May find an alternative if I have enough time as the images returned
 // from the API are quite low resolution.
 
-function pullCityPhoto(name) {
-  var cityURL =
-    "https://api.teleport.org/api/urban_areas/slug:" + name + "/images/";
+function pullCityPhoto(name) {    
   var cityName = document.getElementById("cityName");
   cityName.textContent = name;
-  return fetch(cityURL)
-    .then(function (response) {
-      return response.json();
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+
+ return $.ajax({
+    url : "https://api.teleport.org/api/urban_areas/slug:" + name + "/images/",
+
+  })
+    .done(function (response) {
+    return response
+  })
 }
+
+
+
+
+// function pullCityPhoto(name) {
+//   var cityURL =
+//     "https://api.teleport.org/api/urban_areas/slug:" + name + "/images/";
+//   var cityName = document.getElementById("cityName");
+//   cityName.textContent = name;
+//   return fetch(cityURL)
+//     .then(function (response) {
+//       return response.json();
+//     })
+//     .catch(function (error) {
+//       console.log(error);
+//     });
+// }
 
 function renderCityPhoto(image) {
   var backGroundImage = document.getElementById("image-background");
