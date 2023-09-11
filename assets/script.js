@@ -105,13 +105,8 @@ function pullCityPhoto(name){
   }).then(function (data) {
     return data
   })
-  .catch(error => {
-    if (error.response === 404){
-      console.error(error + '404 error');
-      randomPhoto();
-    } else {
-      console.error(error + '200 error');
-    }
+  .catch(function (error) {
+    console.log(error);
   })
 }
 //Aston: Above function will pullCityPhoto, using the VAR 'name'. I don't think that is correct. We need to pull user
@@ -129,6 +124,7 @@ function renderCityPhoto(image){
 
 function randomPhoto(){
   console.log('error: NO IMAGE FOUND IN pullCityPhoto function')
+  backGroundImage.src = "assets/ImageAssets/PlaceholderBackground.PNG";
 //Aston: This function will pull a random local image when the Photo API fails.
 }
 
