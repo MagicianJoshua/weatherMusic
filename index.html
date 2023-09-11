@@ -15,7 +15,8 @@
     <header>
         <h1>MoodMusic.com</h1>
     </header>
-
+    <!-- Image Background below. -->
+    <img id="image-background" src="assets/ImageAssets/PlaceholderBackground.PNG" alt="backgroundElement">
     <section id="WeatherCardEl" class=" Main-Container">
         <div class="StandardizeSize">
             <div id="WeatherCardHeader">
@@ -28,8 +29,8 @@
                         <button type="submit" class="searchbar__button">
                             <i class="Material-Icons">search</i>
                     </div>
-                    <div id="cityName">
-                        <h2>CITYNAMEPLACEHOLDER</h2>
+                    <div>
+                        <h2 id="cityName">CITYNAMEPLACEHOLDER</h2>
                     </div>
             </div>
         <div class="PlaylistContainer flex-container-column">
@@ -39,8 +40,10 @@
 
     <script src="assets/script.js"></script>
 <!--     <video autoplay muted loop id="video-background" src="assets/ImageAssets/pexels_videos_1722697 (2160p).mp4" type="video/mp4"></video> -->
+        <script async
+            src="https://api.teleport.org/api/urban_areas">
+        </script>
 
-          
 </body>
 
 </html>
