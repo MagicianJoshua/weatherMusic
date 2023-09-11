@@ -86,16 +86,21 @@ var weather = {
 }
 
 var moods = {
-  "thunder":"angry",
-  "sunshine":"happy",
-  "partly-cloudy":"mleancholy",
-  "overcast": "sad",
-  "raining":"contemplative",
-  "snowing":"christmas",
-  "foggy":"sad",
-} "windy":"distressed",
-
-
+  "thunderstorm":"angry",
+  "drizzle":"sad",
+  "rain":"melancholy",
+  "snow": "christmas",
+  "mist":"calm",
+  "smoke":"uneasy",
+  "haze":"tranquil",
+  "dust":"afraid",
+  "fog":"ominous",
+  "sand":"relaxed",
+  "ash":"tense",
+  "squall":"nervous",
+  "tornado":"stressed",
+  "clear":"happy",
+}
 searchBtn.addEventListener("click", function(event){
   event.preventDefault();
   fetch(url, options)
