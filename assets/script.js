@@ -6,11 +6,20 @@
 // This input will be stored in a variable.
 
 var cityImage;
-
+var placeholderImage = [
+'assets/ImageAssets/PlaceholderBackground.PNG',
+'assets/ImageAssets/PlaceholderBackground.PNG',
+'assets/ImageAssets/PlaceholderBackground.PNG',
+'assets/ImageAssets/PlaceholderBackground.PNG',
+];
+// Aston: Above array will hold a few seperate image assets that will be the defaults for when the API fails to find
+// a city (free API so it only has major cities). May find an alternative if I have enough time as the images returned
+// from the API are quite low resolution.
 
 function pullCityPhoto(name){
   var cityURL = 'https://api.teleport.org/api/urban_areas/slug:' + name + '/images/'
-  // console.log(cityURL);
+  var cityName = document.getElementById("cityName");
+  cityName.textContent = name;
   return fetch(cityURL)
     .then(function (response){
       return response.json();
@@ -18,34 +27,34 @@ function pullCityPhoto(name){
     return data
   })
   .catch(error => {
-    // console.error(error);
-    randomPhoto();
+    if (error.response === 404){
+      console.error(error + '404 error');
+      randomPhoto();
+    } else {
+      console.error(error + '200 error');
+    }
   })
 }
+//Aston: Above function will pullCityPhoto, using the VAR 'name'. I don't think that is correct. We need to pull user
+// input but I don't know where that gets pulled. Note that line 97 pulls Moncton as a static.
 
 pullCityPhoto('quebec').then(function (data){
-  // console.log("Current",data.photos[0].image.web);
   cityImage = data.photos[0];
-  // console.log("CITY IMAGE", cityImage);
   renderCityPhoto(cityImage);
 })
+//Aston: Above is to recieve userInput and set the background image using the renderCityPhoto function.
+//Currently defaulted to Quebec, needs proper user input.
 
 function renderCityPhoto(image){
-  // console.log(image)
   var backGroundImage = document.getElementById("image-background");
-  backGroundImage.appendChild(image);
+  backGroundImage.src = image.image.web;
 }
-
-// Need to understand structure above. Go through with the Wizard aka Joshua to figure this piece out.
-
+//ASton: This can probably be combined with pullCityPhoto?
 
 function randomPhoto(){
   console.log('error: NO IMAGE FOUND IN pullCityPhoto function')
-// This function will pull a random local image when the Photo API fails.
+//Aston: This function will pull a random local image when the Photo API fails.
 }
-
-// https://api.teleport.org/api/urban_areas/slug:san-francisco-bay-area/images/
-
 
 const url = "https://spotify23.p.rapidapi.com/search/?q=" +
   userInfo + "&type=playlists&offset=0&limit=50&numberOfTopResults=5";
@@ -94,6 +103,7 @@ function weatherApi(city) {
   weatherApi("moncton").then(function (data){
     console.log(data);
   });
+  //Aston: The above is defaulted to Moncton, switch to ensure this pulls the userinput.
 
 
   
