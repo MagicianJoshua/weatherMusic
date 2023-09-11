@@ -12,7 +12,7 @@ var resetBtnEl = document.querySelector("#resetBtn");
 var weatherDescription;
 var cityImage;
 var genreUserChoice = [];
-var genres = ["metal", "jazz", "pop", "rock", "country","rap","dicso","classical","alternative"].sort();
+var genres = ["metal", "jazz", "pop", "rock", "country","rap","disco","classical","alternative"].sort();
 var placeholderImage = [
   "assets/ImageAssets/PlaceholderBackground.PNG",
   "assets/ImageAssets/PlaceholderBackground.PNG",
@@ -67,14 +67,21 @@ searchBtn.addEventListener("click", function (event) {
     let iconUrl = "https://openweathermap.org/img/wn/" + icon + "@2x.png";
     weatherIcon.setAttribute("src", iconUrl);
     weatherHeaderEl.textContent = weather.name;
-    pullCityPhoto(searchBar.value).then(function (data) {
-      cityImage = data.photos[0];
-      renderCityPhoto(cityImage);
-    });
+   
   });
 
   genreHeaderEl.style.display = "flex";
   playlistSearch.style.display = "flex";
+
+
+  let genreButton = document.querySelectorAll(".genreBtn");
+
+  if (genreButton.length > 0) {
+    for (let i = 0; i < genreButton.length; i++) {
+      genreButton[i].remove();
+      console.log("removing ",genreButton[i].getAttribute("id"));
+    }
+  }
 
   for (let i = 0; i < genres.length; i++) {
     let btn = document.createElement("button");
@@ -94,6 +101,11 @@ searchBtn.addEventListener("click", function (event) {
     });
     genreEl.appendChild(btn);
   }
+  pullCityPhoto(searchBar.value)
+  .done(function (data) {
+  cityImage = data.photos[0];
+  renderCityPhoto(cityImage);
+});
 });
 
 playlistSearch.addEventListener("click", function (event) {
@@ -139,19 +151,19 @@ function searchPlaylist() {
 // a city (free API so it only has major cities). May find an alternative if I have enough time as the images returned
 // from the API are quite low resolution.
 
-function pullCityPhoto(name) {
-  var cityURL =
-    "https://api.teleport.org/api/urban_areas/slug:" + name + "/images/";
+function pullCityPhoto(name) {    
   var cityName = document.getElementById("cityName");
   cityName.textContent = name;
-  return fetch(cityURL)
-    .then(function (response) {
-      return response.json();
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+
+ return $.ajax({
+    url : "https://api.teleport.org/api/urban_areas/slug:" + name + "/images/",
+
+  })
+    .done(function (response) {
+    return response
+  })
 }
+
 
 function renderCityPhoto(image) {
   var backGroundImage = document.getElementById("image-background");
