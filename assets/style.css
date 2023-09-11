@@ -14,11 +14,11 @@ header{
     justify-content: center;
     height: 110px;
     width: 100%;
-    border-bottom: solid var(--White);
+    border-bottom: solid var(--Orange);
 }
 
 body {
-    background-color: rgb(54, 54, 54);
+    background-color: rgb(0, 0, 0);
 
 }
 
@@ -28,28 +28,34 @@ h1{
     font-family: Georgia, 'Times New Roman', Times, serif;
     margin-bottom: 5px;
     margin-top: 5px;
+    background: var(--sunsetRed);
+    /* Linear Gradient Effect added to h1 */
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
 }
 
 h2{
     font-size: 15px;
-    color: var(--White);
+    color: var(--Black);
     font-family: Georgia, 'Times New Roman', Times, serif;
     margin: 20px;
 
-}
-
+} 
 .ImageClass{
-    width: 100%;
+    width: 50%;
+
+    height: auto;
 
 }
-
 .StandardizeSize{
     width: 100%;
 }
 
 
+
 .Main-Container{
-background: linear-gradient(to bottom, var(--skyBlue), var(--White));
+/* background: linear-gradient(to bottom, var(--skyBlue), var(--White)); */
+background: linear-gradient(to bottom, var(--skyBlue), rgba(255, 255, 255, 0));
 width: 100%;
 height: 100%;
 max-width: 500px;
@@ -61,6 +67,7 @@ border-bottom-right-radius: 25px;
 }
 
 
+
 .flex-container-row{
 display: flex;
 justify-content: center;
@@ -68,6 +75,7 @@ align-items: center;
 flex-direction: column;
 border: solid var(--White);
 }
+
 
 
 .flex-container-column{
@@ -96,9 +104,6 @@ border: solid var(--White);
     size: 1.3;
 
 }
-
-
-
 
 .searchbar {
     width: 100%;
@@ -133,17 +138,6 @@ border: solid var(--White);
     align-items: center;
     
 }
-
-.genreBtn {
-    width: 450px;
-    margin: 5px;
-    border-radius: 10px;
-    height: 45px;
-}
-
-
-/*  */
-
 .searchbar__input::placeholder {
     color: #8cc6ba;
 }
@@ -181,6 +175,53 @@ border: solid var(--White);
     flex-direction: row;
     margin: 50px, 50px, 50px, 0px;
 }
+
+#image-background{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; 
+    z-index: -1; 
+    background-size: cover;
+    object-fit:cover;
+    background-repeat: no-repeat;
+    opacity: 0.7;
+}
+
+#fullSearch {
+    width: 450px;
+    margin: 5px;
+    border-radius: 10px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    background-color: lightgreen;
+}
+
+.genreBtn {
+    width: 450px;
+    margin: 5px;
+    border-radius: 10px;
+    height: 45px;
+}
+
+
+#genreEl {
+    display: flex;
+    flex-direction: column;
+
+}
+
+#genreHeader {
+    font-size: large;
+    color: white;
+}
+
+/*  */
+
+
 
 #genreEl {
     display: flex;

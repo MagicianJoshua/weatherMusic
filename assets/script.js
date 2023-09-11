@@ -1,3 +1,4 @@
+
 var playlistSearch = document.querySelector("#fullSearch");
 var searchBtn = document.querySelector(".searchbar__button");
 var genreContainer = document.querySelector(".genreContainer");
@@ -19,6 +20,7 @@ var placeholderImage = [
   "assets/ImageAssets/PlaceholderBackground.PNG",
 ];
 var userInfo = [];
+
 var weather = {
   name: null,
   icon: null,
@@ -26,6 +28,7 @@ var weather = {
   description: null,
   main: null,
 };
+
 
 var moods = {
   "thunderstorm": "angry",
@@ -149,11 +152,6 @@ function pullCityPhoto(name) {
       console.log(error);
     });
 }
-//Aston: Above function will pullCityPhoto, using the VAR 'name'. I don't think that is correct. We need to pull user
-// input but I don't know where that gets pulled. Note that line 97 pulls Moncton as a static.
-
-//Aston: Above is to recieve userInput and set the background image using the renderCityPhoto function.
-//Currently defaulted to Quebec, needs proper user input.
 
 function renderCityPhoto(image) {
   var backGroundImage = document.getElementById("image-background");
@@ -161,11 +159,13 @@ function renderCityPhoto(image) {
 }
 //ASton: This can probably be combined with pullCityPhoto?
 
+
 function randomPhoto() {
   console.log("error: NO IMAGE FOUND IN pullCityPhoto function");
   backGroundImage.src = "assets/ImageAssets/PlaceholderBackground.PNG";
   //Aston: This function will pull a random local image when the Photo API fails.
 }
+
 
 //this is the weatherApi function
 function weatherApi(city) {
