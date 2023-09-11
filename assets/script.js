@@ -17,8 +17,15 @@ var weatherHeaderEl = document.querySelector("#cityNameHeader");
 var cityNamePEl = document.querySelector("#cityNameP");
 
 var weatherDescription;
+var cityImage;
 var genreUserChoice = [];
 var genres = ["metal", "jazz", "pop", "rock", "country"];
+var placeholderImage = [
+  'assets/ImageAssets/PlaceholderBackground.PNG',
+  'assets/ImageAssets/PlaceholderBackground.PNG',
+  'assets/ImageAssets/PlaceholderBackground.PNG',
+  'assets/ImageAssets/PlaceholderBackground.PNG',
+  ];  
 var userInfo = [];
 var weather = {
   name: null,
@@ -28,11 +35,6 @@ var weather = {
   main: null,
 };
 
-
-
-
-
-//This is creating all the genre buttons
 for (let i = 0; i < genres.length; i++) {
   let btn = document.createElement("button");
   btn.textContent = genres[i];
@@ -48,11 +50,30 @@ for (let i = 0; i < genres.length; i++) {
     }
     userInfo[1] = genreUserChoice[0];
     genreHeaderEl.textContent = "Current selected genre: " + genreUserChoice[0];
-    
   });
-
   genreEl.appendChild(btn);
 }
+
+searchBtn.addEventListener("click", function (event) {
+  event.preventDefault();
+  console.log(searchBar.value)
+  weatherApi(searchBar.value).then(function (data) {
+    weather.icon = data.weather[0].icon;
+    console.log(weather.icon);
+    weather.name = data.name;
+    weather.temp = data.main.temp;
+    weather.description = data.weather[0].description;
+    weather.main = data.weather[0].main.toLowerCase();
+    let icon = weather.icon;
+    let iconUrl = "https://openweathermap.org/img/wn/" + icon + "@2x.png";
+    weatherIcon.setAttribute("src", iconUrl);
+    weatherHeaderEl.textContent = weather.name;
+    pullCityPhoto(searchBar.value).then(function (data){
+      cityImage = data.photos[0];
+      renderCityPhoto(cityImage);
+    })
+  });
+});
 
 playlistSearch.addEventListener("click", function (event) {
   event.preventDefault();
@@ -84,13 +105,7 @@ const options = {
         });
 });
 
-var cityImage;
-var placeholderImage = [
-'assets/ImageAssets/PlaceholderBackground.PNG',
-'assets/ImageAssets/PlaceholderBackground.PNG',
-'assets/ImageAssets/PlaceholderBackground.PNG',
-'assets/ImageAssets/PlaceholderBackground.PNG',
-];
+
 // Aston: Above array will hold a few seperate image assets that will be the defaults for when the API fails to find
 // a city (free API so it only has major cities). May find an alternative if I have enough time as the images returned
 // from the API are quite low resolution.
@@ -132,26 +147,7 @@ function randomPhoto(){
 
   
 
-searchBtn.addEventListener("click", function (event) {
-  event.preventDefault();
-  console.log(searchBar.value)
-  weatherApi(searchBar.value).then(function (data) {
-    weather.icon = data.weather[0].icon;
-    console.log(weather.icon);
-    weather.name = data.name;
-    weather.temp = data.main.temp;
-    weather.description = data.weather[0].description;
-    weather.main = data.weather[0].main.toLowerCase();
-    let icon = weather.icon;
-    let iconUrl = "https://openweathermap.org/img/wn/" + icon + "@2x.png";
-    weatherIcon.setAttribute("src", iconUrl);
-    weatherHeaderEl.textContent = weather.name;
-    pullCityPhoto(searchBar.value).then(function (data){
-      cityImage = data.photos[0];
-      renderCityPhoto(cityImage);
-    })
-  });
-});
+
 
 
 //this is the weatherApi function
@@ -180,9 +176,7 @@ function PlaylistRandomizer(array) {
     chosenSong.uri,
     chosenSong.images.items[0].sources[0].url,
   ];
-  // console.log("name", nameUrlAndImage[0]);
-  // console.log("Link", nameUrlAndImage[1]);
-  // console.log("image", nameUrlAndImage[2]);
+
   return nameUrlAndImage;
 }
 
