@@ -1,6 +1,7 @@
 //this is the url for the spotify api
 
 
+
 // * This array is randomized for now but eventually will correspond with the weather.
 var moods = ["Happy ", "Sad ", "Angry ", "Anxious ", "dreamy"];
 var genres = ["metal", "jazz", "pop", "rock", "country"];
@@ -62,7 +63,7 @@ playlistSearch.addEventListener("click", function (event) {
   searchChoice +
   "&type=playlists&offset=0&limit=50&numberOfTopResults=5";
 const options = {
-  method: "GET",
+        method: "GET",
   headers: {
     "X-RapidAPI-Key": "6eb0f56eacmsh4879f7ba423d0f6p1f0f15jsn0aec5d290516",
     "X-RapidAPI-Host": "spotify23.p.rapidapi.com",
@@ -85,6 +86,61 @@ fetch(url, options)
     });
 });
 
+var cityImage;
+var placeholderImage = [
+'assets/ImageAssets/PlaceholderBackground.PNG',
+'assets/ImageAssets/PlaceholderBackground.PNG',
+'assets/ImageAssets/PlaceholderBackground.PNG',
+'assets/ImageAssets/PlaceholderBackground.PNG',
+];
+// Aston: Above array will hold a few seperate image assets that will be the defaults for when the API fails to find
+// a city (free API so it only has major cities). May find an alternative if I have enough time as the images returned
+// from the API are quite low resolution.
+
+function pullCityPhoto(name){
+  var cityURL = 'https://api.teleport.org/api/urban_areas/slug:' + name + '/images/'
+  var cityName = document.getElementById("cityName");
+  cityName.textContent = name;
+  return fetch(cityURL)
+    .then(function (response){
+      return response.json();
+  }).then(function (data) {
+    return data
+  })
+  .catch(error => {
+    if (error.response === 404){
+      console.error(error + '404 error');
+      randomPhoto();
+    } else {
+      console.error(error + '200 error');
+    }
+  })
+}
+//Aston: Above function will pullCityPhoto, using the VAR 'name'. I don't think that is correct. We need to pull user
+// input but I don't know where that gets pulled. Note that line 97 pulls Moncton as a static.
+
+pullCityPhoto('quebec').then(function (data){
+  cityImage = data.photos[0];
+  renderCityPhoto(cityImage);
+})
+//Aston: Above is to recieve userInput and set the background image using the renderCityPhoto function.
+//Currently defaulted to Quebec, needs proper user input.
+
+function renderCityPhoto(image){
+  var backGroundImage = document.getElementById("image-background");
+  backGroundImage.src = image.image.web;
+}
+//ASton: This can probably be combined with pullCityPhoto?
+
+function randomPhoto(){
+  console.log('error: NO IMAGE FOUND IN pullCityPhoto function')
+//Aston: This function will pull a random local image when the Photo API fails.
+}
+
+
+
+  
+
 searchBtn.addEventListener("click", function (event) {
   event.preventDefault();
   console.log(searchBar.value)
@@ -100,11 +156,14 @@ searchBtn.addEventListener("click", function (event) {
     weatherIcon.setAttribute("src", iconUrl);
     weatherHeaderEl.textContent = weather.name;
   });
+
 });
+
 
 //this is the weatherApi function
 function weatherApi(city) {
   let apiKey = "cf6175175fe5277a53e5cac601d3de9d";
+
   let url =
     "https://api.openweathermap.org/data/2.5/weather?q=" +
     city +
@@ -114,6 +173,7 @@ function weatherApi(city) {
     .then((Response) => Response.json())
     .then((data) => data);
 }
+
 
 
 
@@ -157,6 +217,7 @@ function cardConstructor(name, link, image) {
   Container.appendChild(playlistLink);
 
   playlistContainer.appendChild(Container);
+
   playlistContainer.style.display = "flex"
 }
 
@@ -165,4 +226,5 @@ function searchPlaylist() {
   let userChoice = userInfo.join(" ");
   genreContainer.style.display = "none";
   return userChoice;
+
 }

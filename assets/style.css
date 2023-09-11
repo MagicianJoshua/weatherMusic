@@ -7,7 +7,6 @@
  --skyBlue: #77e0e7;
  --sunsetRed: -webkit-linear-gradient(rgb(241, 12, 58), rgb(216, 126, 36));
  --Orange: rgb(208, 101, 24);
- 
 }
 
 header{
@@ -19,7 +18,16 @@ header{
 }
 
 
+
 .StandardizeSize{
+    width: 100%;
+}
+
+header{
+    display:flex;
+    justify-content: center;
+    height: 110px;
+
     width: 100%;
 }
  
@@ -50,7 +58,9 @@ h2{
 } 
 .ImageClass{
     width: 50%;
-    height: auto;
+
+    height: auto%;
+
 }
 
 .Main-Container{
@@ -104,6 +114,28 @@ border-bottom-right-radius: 25px;
     border-radius: 5px;
     flex: 5;
 }
+
+
+#playlistEl{
+    padding: 5px;
+    margin: 250px;
+    width: 95%;
+    height: 90%;
+}
+
+#image-background{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; 
+    z-index: -1; 
+    background-size: cover;
+    object-fit:cover;
+    background-repeat: no-repeat;
+    opacity: 0.7;
+}
+
 
 .searchbar {
     width: 100%;
