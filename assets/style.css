@@ -17,21 +17,6 @@ header{
     border-bottom: solid var(--Orange);
 }
 
-
-
-.StandardizeSize{
-    width: 100%;
-}
-
-header{
-    display:flex;
-    justify-content: center;
-    height: 110px;
-
-    width: 100%;
-}
- 
-
 body {
     background-color: rgb(0, 0, 0);
 
@@ -59,9 +44,14 @@ h2{
 .ImageClass{
     width: 50%;
 
-    height: auto%;
+    height: auto;
 
 }
+.StandardizeSize{
+    width: 100%;
+}
+
+
 
 .Main-Container{
 /* background: linear-gradient(to bottom, var(--skyBlue), var(--White)); */
@@ -75,6 +65,17 @@ border-top-left-radius: 10px;
 border-bottom-left-radius: 25px;
 border-bottom-right-radius: 25px;
 }
+
+
+
+.flex-container-row{
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+border: solid var(--White);
+}
+
 
 
 .flex-container-column{
@@ -103,39 +104,6 @@ border-bottom-right-radius: 25px;
     size: 1.3;
 
 }
-
-#WeatherCardHeader{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin: 50px, 25px, 10px, 50px;
-    padding: 10px;
-    border-radius: 5px;
-    flex: 5;
-}
-
-
-#playlistEl{
-    padding: 5px;
-    margin: 250px;
-    width: 95%;
-    height: 90%;
-}
-
-#image-background{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%; 
-    z-index: -1; 
-    background-size: cover;
-    object-fit:cover;
-    background-repeat: no-repeat;
-    opacity: 0.7;
-}
-
 
 .searchbar {
     width: 100%;
@@ -170,35 +138,6 @@ border-bottom-right-radius: 25px;
     align-items: center;
     
 }
-#fullSearch {
-    width: 450px;
-    margin: 5px;
-    border-radius: 10px;
-    height: 45px;
-    display: flex;
-    justify-content: center;
-    align-items:center;
-    background-color: lightgreen;
-}
-.genreBtn {
-    width: 450px;
-    margin: 5px;
-    border-radius: 10px;
-    height: 45px;
-}
-
-#genreEl {
-    display: flex;
-    flex-direction: column;
-
-}
-
-#genreHeader {
-    font-size: large;
-    color: white;
-}
-/*  */
-
 .searchbar__input::placeholder {
     color: #8cc6ba;
 }
@@ -237,6 +176,65 @@ border-bottom-right-radius: 25px;
     margin: 50px, 50px, 50px, 0px;
 }
 
+#image-background{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; 
+    z-index: -1; 
+    background-size: cover;
+    object-fit:cover;
+    background-repeat: no-repeat;
+    opacity: 0.7;
+}
+
+#fullSearch {
+    width: 450px;
+    margin: 5px;
+    border-radius: 10px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    background-color: lightgreen;
+}
+
+.genreBtn {
+    width: 450px;
+    margin: 5px;
+    border-radius: 10px;
+    height: 45px;
+}
+
+
+#genreEl {
+    display: flex;
+    flex-direction: column;
+
+}
+
+#genreHeader {
+    font-size: large;
+    color: white;
+}
+
+/*  */
+
+
+
+#genreEl {
+    display: flex;
+    flex-direction: column;
+
+}
+
+#genreHeader {
+    display: none;
+    font-size: large;
+    color: white;
+}
+
 #playlistEl{
     display:flex;
     flex-direction: column;
@@ -263,6 +261,85 @@ border-bottom-right-radius: 25px;
 
 #PlaylistLink{
     margin:25px;
-    
     color:black;
+}
+
+#resetBtn {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 450px;
+    margin: 5px;
+    border-radius: 10px;
+    height: 45px;
+    background-color: lightgreen;
+}
+
+#resetBtnContainer{
+    display: flex;
+    justify-content: center;
+}
+
+#fullSearch {
+    width: 450px;
+    margin: 5px;
+    border-radius: 10px;
+    height: 45px;
+    display: none;
+    justify-content: center;
+    align-items:center;
+    background-color: lightgreen;
+}
+
+#WeatherCardHeader{
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-evenly;
+    align-items: flex-start;
+    margin: 50px, 25px, 10px, 50px;
+    padding: 10px;
+    border-radius: 5px;
+    flex: 5;
+
+}
+
+#playlistEl{
+    background-color: rgb(134, 120, 148);
+    padding: 5px;
+    border: solid var(--Black);
+    margin: 250px;
+    width: 95%;
+    height: 90%;
+}
+    
+#cityName{
+    color:white;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+
+#cityNameHeader{
+    margin-bottom: 20px;
+}
+#playlistEl{
+    padding: 5px;
+    margin: 250px;
+    width: 95%;
+    height: 90%;
+}
+
+#image-background{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; 
+    z-index: -1; 
+    background-size: cover;
+    object-fit:cover;
+    background-repeat: no-repeat;
+    opacity: 0.7;
 }
