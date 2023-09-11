@@ -5,6 +5,8 @@
  --White: #ffffff;
  --Gray: #858585;
  --skyBlue: #77e0e7;
+ --sunsetRed: -webkit-linear-gradient(rgb(241, 12, 58), rgb(216, 126, 36));
+ --Orange: rgb(208, 101, 24);
 }
 
 header{
@@ -12,29 +14,9 @@ header{
     justify-content: center;
     height: 110px;
     width: 100%;
-    border-bottom: solid var(--White);
+    border-bottom: solid var(--Orange);
 }
 
-body {
-    background-color: rgb(54, 54, 54);
-
-}
-
-h1{
-    font-size: 95px;
-    color: var(--White);
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    margin-bottom: 5px;
-    margin-top: 5px;
-}
-
-h2{
-    font-size: 15px;
-    color: var(--White);
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    margin: 20px;
-
-}
 
 
 .StandardizeSize{
@@ -45,12 +27,14 @@ header{
     display:flex;
     justify-content: center;
     height: 110px;
+
     width: 100%;
-    border-bottom: solid var(--White);
 }
+ 
 
 body {
     background-color: rgb(0, 0, 0);
+
 }
 
 h1{
@@ -59,19 +43,24 @@ h1{
     font-family: Georgia, 'Times New Roman', Times, serif;
     margin-bottom: 5px;
     margin-top: 5px;
+    background: var(--sunsetRed);
+    /* Linear Gradient Effect added to h1 */
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
 }
 
 h2{
     font-size: 15px;
-    color: var(--White);
+    color: var(--Black);
     font-family: Georgia, 'Times New Roman', Times, serif;
     margin: 20px;
 
-}
-
+} 
 .ImageClass{
     width: 50%;
+
     height: auto%;
+
 }
 
 .Main-Container{
@@ -126,6 +115,7 @@ border-bottom-right-radius: 25px;
     flex: 5;
 }
 
+
 #playlistEl{
     padding: 5px;
     margin: 250px;
@@ -145,6 +135,7 @@ border-bottom-right-radius: 25px;
     background-repeat: no-repeat;
     opacity: 0.7;
 }
+
 
 .searchbar {
     width: 100%;
@@ -169,6 +160,44 @@ border-bottom-right-radius: 25px;
     background: white;
     box-shadow: 0 0 2px #8cc6ba;
 }
+
+/*  */
+.genreContainer{
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+    align-items: center;
+    
+}
+#fullSearch {
+    width: 450px;
+    margin: 5px;
+    border-radius: 10px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    background-color: lightgreen;
+}
+.genreBtn {
+    width: 450px;
+    margin: 5px;
+    border-radius: 10px;
+    height: 45px;
+}
+
+#genreEl {
+    display: flex;
+    flex-direction: column;
+
+}
+
+#genreHeader {
+    font-size: large;
+    color: white;
+}
+/*  */
 
 .searchbar__input::placeholder {
     color: #8cc6ba;
@@ -197,7 +226,9 @@ border-bottom-right-radius: 25px;
     background-color:rgb(255, 255, 255) ;
     margin: 60px;
     width: 75%;
+    height: 450px;
     border-radius: 25px;
+    display: none;
 }
 
 .weather {
@@ -211,6 +242,11 @@ border-bottom-right-radius: 25px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+        padding: 5px;
+        margin: 250px;
+        width: 95%;
+        height: 90%;
+    
 }
 
 #playlistName{
