@@ -116,7 +116,7 @@ playlistSearch.addEventListener("click", function (event) {
   const url =
     "https://spotify23.p.rapidapi.com/search/?q=" +
     searchChoice +
-    "&type=playlists&offset=0&limit=50&numberOfTopResults=5";
+    "&type=playlists&offset=0&limit=25&numberOfTopResults=5";
   const options = {
     method: "GET",
     headers: {
@@ -144,6 +144,7 @@ playlistSearch.addEventListener("click", function (event) {
 
 function searchPlaylist() {
   userInfo[0] = moods[weather.main];
+  console.log(userInfo);
   let userChoice = userInfo.join(" ");
   genreContainer.style.display = "none";
   return userChoice;
