@@ -120,7 +120,7 @@ playlistSearch.addEventListener("click", function (event) {
   const options = {
     method: "GET",
     headers: {
-      "X-RapidAPI-Key": "6eb0f56eacmsh4879f7ba423d0f6p1f0f15jsn0aec5d290516",
+      "X-RapidAPI-Key": "ea014882e5msh1d663ed744b9f24p101508jsn7c0484433dc2",
       "X-RapidAPI-Host": "spotify23.p.rapidapi.com",
     },
   };
