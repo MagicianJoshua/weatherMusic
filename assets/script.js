@@ -1,4 +1,3 @@
-
 var playlistSearch = document.querySelector("#fullSearch");
 var searchBtn = document.querySelector(".searchbar__button");
 var genreContainer = document.querySelector(".genreContainer");
@@ -8,11 +7,25 @@ var genreEl = document.querySelector("#genreEl");
 var weatherIcon = document.querySelector("#weatherIcon");
 var weatherHeaderEl = document.querySelector("#cityNameHeader");
 var cityNamePEl = document.querySelector("#cityNameP");
+var playlistHistory = document.querySelector(".playlistHistory");
 var resetBtnEl = document.querySelector("#resetBtn");
+var historyBtn = document.querySelector("#playlistBtn");
+var names = localStorage.getItem("playlist-names");
+var playlistUrl = localStorage.getItem("playlist-link");
 var weatherDescription;
 var cityImage;
 var genreUserChoice = [];
-var genres = ["metal", "jazz", "pop", "rock", "country","rap","disco","classical","alternative"].sort();
+var genres = [
+  "metal",
+  "jazz",
+  "pop",
+  "rock",
+  "country",
+  "rap",
+  "disco",
+  "classical",
+  "alternative",
+].sort();
 var placeholderImage = [
   "assets/ImageAssets/PlaceholderBackground.PNG",
   "assets/ImageAssets/PlaceholderBackground.PNG",
@@ -29,28 +42,33 @@ var weather = {
   main: null,
 };
 
-
 var moods = {
-  "thunderstorm": "angry",
-  "drizzle": "sad",
-  "rain": "melancholy",
-  "snow": "christmas",
-  "mist": "calm",
-  "smoke": "uneasy",
-  "haze": "tranquil",
-  "dust": "afraid",
-  "fog": "ominous",
-  "sand": "relaxed",
-  "ash": "tense",
-  "squall": "nervous",
-  "tornado": "stressed",
-  "clear": "happy",
-  "clouds":"dreamy"
+  thunderstorm: "angry",
+  drizzle: "sad",
+  rain: "melancholy",
+  snow: "christmas",
+  mist: "calm",
+  smoke: "uneasy",
+  haze: "tranquil",
+  dust: "afraid",
+  fog: "ominous",
+  sand: "relaxed",
+  ash: "tense",
+  squall: "nervous",
+  tornado: "stressed",
+  clear: "happy",
+  clouds: "dreamy",
 };
 
-resetBtnEl.addEventListener("click", function(event) {
-  console.log("Refreshing page");
+historyBtn.addEventListener("click", function(event) {
+  
+ 
+  
 })
+
+resetBtnEl.addEventListener("click", function (event) {
+  console.log("Refreshing page");
+});
 
 searchBtn.addEventListener("click", function (event) {
   event.preventDefault();
@@ -67,19 +85,17 @@ searchBtn.addEventListener("click", function (event) {
     let iconUrl = "https://openweathermap.org/img/wn/" + icon + "@2x.png";
     weatherIcon.setAttribute("src", iconUrl);
     weatherHeaderEl.textContent = weather.name;
-   
   });
 
   genreHeaderEl.style.display = "flex";
   playlistSearch.style.display = "flex";
-
 
   let genreButton = document.querySelectorAll(".genreBtn");
 
   if (genreButton.length > 0) {
     for (let i = 0; i < genreButton.length; i++) {
       genreButton[i].remove();
-      console.log("removing ",genreButton[i].getAttribute("id"));
+      console.log("removing ", genreButton[i].getAttribute("id"));
     }
   }
 
@@ -92,22 +108,20 @@ searchBtn.addEventListener("click", function (event) {
       event.preventDefault();
       let genre = this.getAttribute("id");
       genreUserChoice.push(genre);
-  
+
       if (genreUserChoice.length > 1) {
         let removeChoice = genreUserChoice.shift();
       }
       userInfo[1] = genreUserChoice[0];
-      genreHeaderEl.textContent = "Current selected genre: " + genreUserChoice[0];
+      genreHeaderEl.textContent =
+        "Current selected genre: " + genreUserChoice[0];
     });
     genreEl.appendChild(btn);
   }
-  pullCityPhoto(searchBar.value)
-
-  .done(function (data) {
-
-  cityImage = data.photos[0];
-  renderCityPhoto(cityImage);
-});
+  pullCityPhoto(searchBar.value).done(function (data) {
+    cityImage = data.photos[0];
+    renderCityPhoto(cityImage);
+  });
 });
 
 playlistSearch.addEventListener("click", function (event) {
@@ -137,9 +151,10 @@ playlistSearch.addEventListener("click", function (event) {
       }
       let chosenList = PlaylistRandomizer(playlistArray);
       cardConstructor(chosenList[0], chosenList[1], chosenList[2]);
+      storeLinkToDevice(chosenList[0], chosenList[1]);
     });
 
-    resetBtnEl.style.display = "flex";
+  resetBtnEl.style.display = "flex";
 });
 
 function searchPlaylist() {
@@ -154,36 +169,30 @@ function searchPlaylist() {
 // a city (free API so it only has major cities). May find an alternative if I have enough time as the images returned
 // from the API are quite low resolution.
 
-function pullCityPhoto(name) {    
+function pullCityPhoto(name) {
   var cityName = document.getElementById("cityName");
   cityName.textContent = name;
 
- return $.ajax({
-    url : "https://api.teleport.org/api/urban_areas/slug:" + name + "/images/",
-
-  })
-    .done(function (response) {
-    return response
-  })
+  return $.ajax({
+    url: "https://api.teleport.org/api/urban_areas/slug:" + name + "/images/",
+  }).done(function (response) {
+    return response;
+  });
 }
-
-
 
 function renderCityPhoto(image) {
   var backGroundImage = document.getElementById("image-background");
   backGroundImage.src = image.image.web;
 }
-//ASton: This can probably be combined with pullCityPhoto?
 
 
 function randomPhoto() {
   console.log("error: NO IMAGE FOUND IN pullCityPhoto function");
   backGroundImage.src = "assets/ImageAssets/PlaceholderBackground.PNG";
-  //Aston: This function will pull a random local image when the Photo API fails.
+  
 }
 
 
-//this is the weatherApi function
 function weatherApi(city) {
   let apiKey = "cf6175175fe5277a53e5cac601d3de9d";
   let url =
@@ -236,4 +245,49 @@ function cardConstructor(name, link, image) {
   playlistContainer.appendChild(Container);
 
   playlistContainer.style.display = "flex";
+}
+
+function storeLinkToDevice(name, link) {
+  console.log("name", name);
+  console.log("uri", link);
+  var songNameArray = [];
+  var songUrlArray = [];
+  if (names) {
+    console.log("ther is data");
+    songNameArray = names.split(",");
+    songUrlArray = playlistUrl.split(",");
+  } else {
+    console.log("There is no data");
+  }
+
+  songNameArray.push(name);
+  songUrlArray.push(link);
+  console.log(songNameArray);
+  console.log(songUrlArray);
+
+  constructHistory(songNameArray,songUrlArray);
+  localStorage.setItem("playlist-names", songNameArray.toString());
+  localStorage.setItem("playlist-link", songUrlArray.toString());
+}
+
+function constructHistory(nameArray, linkArray) {
+  for (i = 0; i < nameArray.length; i++) {
+    let name = nameArray[i];
+    let link = linkArray[i];
+
+    let card = document.createElement("div");
+    card.setAttribute("id", "HistoryEl");
+
+    let playlistName = document.createElement("h2");
+    playlistName.textContent = name;
+    card.appendChild(playlistName);
+
+    let playlistLink = document.createElement("a");
+    playlistLink.setAttribute("id", "playlistHistory");
+    playlistLink.setAttribute("href", link);
+    playlistLink.textContent = "Spotify link";
+    card.appendChild(playlistLink);
+
+    playlistHistory.appendChild(card);
+  }
 }

@@ -14,58 +14,69 @@
 
 <body>
     <header>
+        
         <h1>MoodMusic.com</h1>
     </header>
     <!-- Image Background below. -->
     <img id="image-background" src="assets/ImageAssets/PlaceholderBackground.PNG" alt="backgroundElement">
-
-
-
-    <section id="WeatherCardEl" class=" Main-Container">
-        <div class="StandardizeSize">
-            <div id="WeatherCardHeader">
-                <div id="WeatherIcon">
-
-                    <img class='ImageClass' id="weatherIcon"   src="assets/ImageAssets/MoodMusicIcon.png" alt="WeatherIcon">
-
-                </div>
-                
-                <form action="./" method="get">
-                    <div id="cityName">
-                        <h2 id="cityNameHeader">Search for a city</h2>
-                    </div>
-                    <div class="searchbar" id="searchbarEl">
-                        <input type="text" class="searchbar__input" name="search" placeholder="City Name">
-                        <button type="submit" class="searchbar__button">
-                            <i class="Material-Icons">search</i>
-
-                    </div>
-                    
-            </div>
-
-         <div class="PlaylistContainer flex-container-column">
-             
-            
-        </div>
-
-        <div id="resetBtnContainer"><button id="resetBtn">Choose a different genre</button></div>
+    <div class="siteContainer">
         
-
-        <div class="genreContainer">
-            <h2 id="genreHeader">Select a genre</h2>
-        <div id="genreEl"></div>
-        <button id="fullSearch">Search for playlist</button>
+        <div id="playlistHistoryContainer">
+            <button id="playlistBtn">View Search History</button>
+        <section class="playlistHistory">
+            <h2>Playlist history</h2>
+            <!-- <ul id="PlaylistHistoryUl">
+                <li>Hi</li>
+            </ul> -->
+        </section>
     </div>
 
-    </section>
+        <section id="WeatherCardEl" class=" Main-Container">
+            <div class="StandardizeSize">
+                <div id="WeatherCardHeader">
+                    <div id="WeatherIcon">
+
+                        <img class='ImageClass' id="weatherIcon" src="assets/ImageAssets/MoodMusicIcon.png"
+                            alt="WeatherIcon">
+
+                    </div>
+
+                    <form action="./" method="get">
+                        <div id="cityName">
+                            <h2 id="cityNameHeader">Search for a city</h2>
+                        </div>
+                        <div class="searchbar" id="searchbarEl">
+                            <input type="text" class="searchbar__input" name="search" placeholder="City Name">
+                            <button type="submit" class="searchbar__button">
+                                <i class="Material-Icons">search</i>
+
+                        </div>
+
+                </div>
+
+                <div class="PlaylistContainer flex-container-column">
+
+
+                </div>
+
+                <div id="resetBtnContainer"><button id="resetBtn">Choose a different genre</button></div>
+
+
+                <div class="genreContainer">
+                    <h2 id="genreHeader">Select a genre</h2>
+                    <div id="genreEl"></div>
+                    <button id="fullSearch">Search for playlist</button>
+                </div>
+
+        </section>
+    </div>
 
     <script src="assets/script.js"></script>
 
 
-<!--     <video autoplay muted loop id="video-background" src="assets/ImageAssets/pexels_videos_1722697 (2160p).mp4" type="video/mp4"></video> -->
-        <script async
-            src="https://api.teleport.org/api/urban_areas">
-        </script>
+    <!--     <video autoplay muted loop id="video-background" src="assets/ImageAssets/pexels_videos_1722697 (2160p).mp4" type="video/mp4"></video> -->
+    <script async src="https://api.teleport.org/api/urban_areas">
+    </script>
 
 
 
