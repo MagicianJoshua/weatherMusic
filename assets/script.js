@@ -60,11 +60,31 @@ var moods = {
   clouds: "dreamy",
 };
 
+
 historyBtn.addEventListener("click", function(event) {
+  event.preventDefault();
+  console.log(historyBtn.textContent);
+  if (historyBtn.textContent === "View Search History")
+  {
+  console.log("View");
+  playlistHistory.style.display = "flex";
+  let nameArray = names.split(",");
+  let playlistUrlArray = playlistUrl.split(",");
+  historyBtn.textContent = "Hide Search History"
+  constructHistory(nameArray,playlistUrlArray);
+  } else if (historyBtn.textContent === "Hide Search History") {
+    playlistHistory.style.display = "none";
+    historyBtn.textContent = "View Search History";
+    let historyEl = document.querySelectorAll("#HistoryEl");
+    for (let i = 0; i < historyEl.length ; i++){
+      historyEl[i].remove();
+    }
+  }
+
   
- 
   
-})
+  
+});
 
 resetBtnEl.addEventListener("click", function (event) {
   console.log("Refreshing page");
@@ -265,9 +285,10 @@ function storeLinkToDevice(name, link) {
   console.log(songNameArray);
   console.log(songUrlArray);
 
-  constructHistory(songNameArray,songUrlArray);
+ 
   localStorage.setItem("playlist-names", songNameArray.toString());
   localStorage.setItem("playlist-link", songUrlArray.toString());
+  
 }
 
 function constructHistory(nameArray, linkArray) {
