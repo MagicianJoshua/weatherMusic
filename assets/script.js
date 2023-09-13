@@ -197,16 +197,20 @@ function searchPlaylist() {
 // a city (free API so it only has major cities). May find an alternative if I have enough time as the images returned
 // from the API are quite low resolution.
 
-function pullCityPhoto(name) {
+function pullCityPhoto(name) {    
   var cityName = document.getElementById("cityName");
   cityName.textContent = name;
 
-  return $.ajax({
-    url: "https://api.teleport.org/api/urban_areas/slug:" + name + "/images/",
-  }).done(function (response) {
-    return response;
-  });
-}
+ return $.ajax({
+    url : "https://api.teleport.org/api/urban_areas/slug:" + name + "/images/",
+
+  })
+
+      .done(function (response) {
+      return response
+    })
+  }
+
 
 function renderCityPhoto(image) {
   var backGroundImage = document.getElementById("image-background");
@@ -228,10 +232,49 @@ function weatherApi(city) {
     city +
     "&units=metric&appid=" +
     apiKey;
+
+  // DON: API MODAL Return a promise that handles the API request
   return fetch(url)
-    .then((Response) => Response.json())
-    .then((data) => data);
+    .then((response) => {
+      if (!response.ok) {
+        // If the response status is not OK (e.g., 404 or 500), reject the promise with an error message
+        throw new Error("City not found or API request failed");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      // Check if the API response contains an error message
+      if (data.message) {
+        // If the response data contains an error message, reject the promise with that error message
+        throw new Error(data.message);
+      }
+      // If there are no errors, resolve the promise with the weather data
+      return data;
+    })
+    .catch((error) => {
+      // If any error occurred during the API request, display the error modal with the error message
+      displayErrorModal(error.message);
+      // Reject the promise with the error message
+      throw error;
+    });
 }
+function displayErrorModal(errorMessage) {
+  var modal = $("#errorModal");
+  var errorText = $("#errorText");
+  var refreshButton = $("#refreshButton");
+
+  errorText.text(errorMessage);
+
+  // Show the modal
+  modal.css("display", "block");
+
+ // Refresh on click
+ refreshButton.click(function() {
+ modal.css("display", "none");
+});
+}
+
+
 
 //*This function takes in the array we get from spotify and spits out a song object with a url and an image.
 function PlaylistRandomizer(array) {
