@@ -64,6 +64,8 @@ var moods = {
 historyBtn.addEventListener("click", function(event) {
   event.preventDefault();
   console.log(historyBtn.textContent);
+  var names = localStorage.getItem("playlist-names");
+  var playlistUrl = localStorage.getItem("playlist-link");
   if (historyBtn.textContent === "View Search History")
   {
   console.log("View");
@@ -170,9 +172,15 @@ playlistSearch.addEventListener("click", function (event) {
         playlistArray.push(playlists[i].data);
       }
       let chosenList = PlaylistRandomizer(playlistArray);
-      cardConstructor(chosenList[0], chosenList[1], chosenList[2]);
       storeLinkToDevice(chosenList[0], chosenList[1]);
+      cardConstructor(chosenList[0], chosenList[1], chosenList[2]);
+      
+      
+      
+
     });
+
+      
 
   resetBtnEl.style.display = "flex";
 });
@@ -280,7 +288,7 @@ function storeLinkToDevice(name, link) {
     console.log("There is no data");
   }
 
-  songNameArray.push(name);
+  songNameArray.push(name.replace(",",""));
   songUrlArray.push(link);
   console.log(songNameArray);
   console.log(songUrlArray);
@@ -289,9 +297,24 @@ function storeLinkToDevice(name, link) {
   localStorage.setItem("playlist-names", songNameArray.toString());
   localStorage.setItem("playlist-link", songUrlArray.toString());
   
+  var nameGet = localStorage.getItem("playlist-names");
+  var playlistUrlGet = localStorage.getItem("playlist-link");
+  let nameArray = nameGet.split(",");
+  let playlistUrlArray = playlistUrlGet.split(",");
+      constructHistory(nameArray,playlistUrlArray);
+  
 }
 
 function constructHistory(nameArray, linkArray) {
+  historyEl = document.querySelectorAll("#HistoryEl");
+  
+
+  if (historyEl.length >= 1){
+    for (let i = 0; i < historyEl.length; i++){
+      historyEl[i].remove();
+    }
+  }
+
   for (i = 0; i < nameArray.length; i++) {
     let name = nameArray[i];
     let link = linkArray[i];
@@ -311,4 +334,21 @@ function constructHistory(nameArray, linkArray) {
 
     playlistHistory.appendChild(card);
   }
-}
+
+
+
+  let nameGet = localStorage.getItem("playlist-names").split(",");
+  let playlistUrlGet = localStorage.getItem("playlist-link").split(",");
+  historyEl = document.querySelectorAll("#HistoryEl");
+  if (nameGet.length > 3) {
+    nameGet.shift();
+    localStorage.setItem("playlist-names", nameGet);
+    playlistUrlGet.shift();
+    localStorage.setItem("playlist-link", playlistUrlGet);
+    console.log("It has been shifted");
+    historyEl[0].remove();
+  }
+  
+    
+  }
+
