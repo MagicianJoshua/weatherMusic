@@ -11,14 +11,24 @@ This is a collabrative project made to help those with difficulties deciding on 
 
 Open in browser of your choice. Enter your city and the site will return a Spotify playlist for you to enjoy.
 
+##Gallery
 
+![image](https://github.com/MagicianJoshua/weatherMusic/assets/137734906/7a0375d3-a9de-44e7-9703-876d08ec9e9a)
 
-[INSERT IMAGE EXAMPLE HERE]
+![image](https://github.com/MagicianJoshua/weatherMusic/assets/137734906/5f5bffcb-0cae-4ab3-b6a9-3d7040b1b1fd)
+
+![image](https://github.com/MagicianJoshua/weatherMusic/assets/137734906/9b0a17dc-cbff-441c-a5f6-894e4baf5d35)
+
 
 ## Future Versions
 -The ability to save playlists in local storage.
 -Additional paramiters around what type of music you like.
 -Dynamic backgrounds for visualization.
+
+## Wireframe
+
+![image](https://github.com/MagicianJoshua/weatherMusic/assets/137734906/4718920c-ae86-4192-b930-159e4bdc457b)
+
 
 
 ## Usage
